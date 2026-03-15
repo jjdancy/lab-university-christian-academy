@@ -13,7 +13,7 @@ export default function AdmissionsCTASection() {
           id="admissions-heading"
           className="mt-3 text-balance text-2xl font-semibold tracking-tight text-white sm:text-3xl md:text-4xl"
         >
-          Ready to enroll your student-athlete at{" "}
+          Ready to enroll at{" "}
           <span className="bg-gradient-to-r from-yellow-300 to-yellow-500 bg-clip-text text-transparent">
             LAB University Christian Academy
           </span>
@@ -21,8 +21,8 @@ export default function AdmissionsCTASection() {
         </h2>
         <p className="mt-4 text-sm text-white/70 md:text-base">
           We are now accepting applications for the 2026–27 school year for
-          grades K–12. Take the next step toward a Christ-centered, college-prep
-          education in an elite basketball environment.
+          grades K–12. Take the
+          next step toward a Christ-centered, college-prep education.
         </p>
 
         <div className="mt-8 flex flex-wrap justify-center gap-4">

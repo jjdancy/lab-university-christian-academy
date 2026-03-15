@@ -37,16 +37,16 @@ export default function HeroSection() {
           >
             A Christ-centered academy for{" "}
             <span className="bg-gradient-to-r from-yellow-200 to-yellow-400 bg-clip-text text-transparent">
-              elite student-athletes
+              Scholars, Leaders, and Athletes
             </span>
             .
           </h1>
           <p className="max-w-xl text-sm leading-relaxed text-white/70 md:text-base">
             LAB University Christian Academy in Charlotte, NC is a K–12,
             Christ-centered private academy that combines a structured
-            college-prep curriculum, the Acellus learning system, and
-            Division-1 style basketball development—so students are prepared in
-            faith, academics, and leadership for the next level.
+            college-prep curriculum and the Acellus learning system—with
+            optional Division-1 style basketball for student-athletes. Students
+            are prepared in faith, academics, and leadership for the next level.
           </p>
 
           <div className="flex flex-wrap items-center gap-4">
