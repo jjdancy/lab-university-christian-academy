@@ -35,7 +35,7 @@ export default function HomePromoVideo() {
             <video
               ref={videoRef}
               className="h-full w-full object-contain object-center"
-              src="/videos/LAB%20PROMO%20FINAL.mov"
+              src="/videos/compressed%20promo.mp4"
               loop
               playsInline
               controls
