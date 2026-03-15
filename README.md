@@ -230,3 +230,8 @@ Images should be optimized and animations should remain subtle to maintain perfo
 The final website should position **LAB University Christian Academy as the premier Christian academic and athletic institution in Charlotte**, combining faith, academic excellence, and elite athletic development into a powerful and compelling online presence.
 
 ---
+## Documentation
+
+Project documentation can be found here:
+
+- [Product Requirements Document](docs/PRD.md)
