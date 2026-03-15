@@ -1,32 +1,40 @@
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
-import HomeBrandValuesSection from "@/components/HomeBrandValuesSection";
+import HomePromoVideo from "@/components/HomePromoVideo";
 import HomeAcademicsPreview from "@/components/HomeAcademicsPreview";
 import HomeAthleticsPreview from "@/components/HomeAthleticsPreview";
 import HomeFacilitiesPreview from "@/components/HomeFacilitiesPreview";
 import HomeLeadershipPreview from "@/components/HomeLeadershipPreview";
-import AdmissionsCTASection from "@/components/AdmissionsCTASection";
 import Footer from "@/components/Footer";
+import ScrollReveal from "@/components/ScrollReveal";
 
 export default function Home() {
   return (
     <div className="min-h-screen bg-black text-white">
       <Navbar />
       <main className="flex flex-col">
-        {/* Hero */}
+        {/* Hero: no scroll reveal so it's visible immediately */}
         <HeroSection />
 
-        {/* Learn • Believe • Achieve brand band */}
-        <HomeBrandValuesSection />
+        <ScrollReveal delay={0}>
+          <HomePromoVideo />
+        </ScrollReveal>
 
-        {/* Alternating feature rows */}
-        <HomeAcademicsPreview />
-        <HomeAthleticsPreview />
-        <HomeFacilitiesPreview />
+        <ScrollReveal delay={50}>
+          <HomeAcademicsPreview />
+        </ScrollReveal>
 
-        {/* Leadership / Faith and Admissions CTA stay as-is */}
-        <HomeLeadershipPreview />
-        <AdmissionsCTASection />
+        <ScrollReveal delay={100}>
+          <HomeAthleticsPreview />
+        </ScrollReveal>
+
+        <ScrollReveal delay={150}>
+          <HomeFacilitiesPreview />
+        </ScrollReveal>
+
+        <ScrollReveal delay={200}>
+          <HomeLeadershipPreview />
+        </ScrollReveal>
       </main>
       <Footer />
     </div>
