@@ -1,2 +1,6 @@
 node_modules
 .next
+
+# Large videos (over GitHub 100 MB limit or 50 MB recommended)
+public/videos/LAB PROMO FINAL.mov
+public/videos/little kids training.mov
