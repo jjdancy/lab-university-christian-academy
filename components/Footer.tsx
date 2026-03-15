@@ -3,9 +3,19 @@ export default function Footer() {
     <footer className="border-t border-white/10 bg-black py-10 text-xs text-white/60">
       <div className="mx-auto flex max-w-6xl flex-col gap-6 px-4 md:flex-row md:items-center md:justify-between md:px-6">
         <div>
-          <p className="text-[0.7rem] font-semibold uppercase tracking-[0.25em] text-yellow-400">
-            LAB University Christian Academy
-          </p>
+          <a
+            href="/"
+            className="inline-flex items-center gap-2 transition-opacity hover:opacity-90"
+          >
+            <img
+              src="/images/logolab.png"
+              alt="LAB University Christian Academy"
+              className="h-7 w-7 object-contain"
+            />
+            <span className="text-[0.7rem] font-semibold uppercase tracking-[0.25em] text-yellow-400">
+              LAB University Christian Academy
+            </span>
+          </a>
           <p className="mt-2 text-white/70">
             8016 Tower Point Dr • Charlotte, NC 28227
           </p>
