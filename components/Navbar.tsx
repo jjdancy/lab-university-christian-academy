@@ -17,6 +17,7 @@ const navLinks = [
     items: [
       { label: "Basketball Program", href: "/athletics" },
       { label: "Teams", href: "/athletics#teams" },
+      { label: "Coaches", href: "/athletics#coaches" },
       { label: "Training System", href: "/athletics#training" },
       { label: "Facilities", href: "/facilities" }
     ]
