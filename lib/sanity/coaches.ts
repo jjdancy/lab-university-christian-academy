@@ -152,7 +152,7 @@ export async function getCoaches(): Promise<ResolvedCoach[]> {
         photoUrl,
         photoAlt: c.photoAlt.trim(),
         highlights: isStringArray(c.highlights)
-          ? c.highlights.map((h) => h.trim()).filter(Boolean)
+          ? c.highlights.map((h: string) => h.trim()).filter(Boolean)
           : [],
         fullBioParagraphs: portableTextToParagraphs(c.fullBio),
       } satisfies ResolvedCoach;
