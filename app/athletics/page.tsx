@@ -62,12 +62,51 @@ export default async function AthleticsPage() {
                 Intense practices, film, performance training, and a culture of
                 accountability. We train student-athletes in a professional
                 environment that mirrors college programs—so players are ready
-                for the next level.
+                for the next level. Our program also earned the Big Shots
+                National Championship, reflecting the standard we bring to every
+                season.
               </p>
             </div>
           </section>
 
-          {/* 2. Program overview */}
+          {/* 2. Championship highlight */}
+          <section className="border-b border-white/10 bg-black py-12 md:py-16">
+            <div className="mx-auto max-w-6xl px-4 md:px-6">
+              <div className="rounded-2xl border border-yellow-500/30 bg-gradient-to-br from-yellow-500/10 via-black to-black p-5 md:p-7">
+                <div className="grid gap-6 md:grid-cols-[1.1fr,1fr] md:items-center">
+                  <div>
+                    <p className="text-xs font-semibold uppercase tracking-[0.3em] text-yellow-400/90">
+                      Championship
+                    </p>
+                    <h2 className="mt-2 text-2xl font-semibold tracking-tight text-white sm:text-3xl">
+                      Big Shots National Champions
+                    </h2>
+                    <p className="mt-3 text-sm leading-relaxed text-white/80">
+                      LAB U captured the Big Shots National Championship, a
+                      major milestone that reflects our standard of discipline,
+                      preparation, and elite competitive execution.
+                    </p>
+                    <p className="mt-2 text-sm text-white/75">
+                      This championship run highlights what families can expect
+                      from our program: high-level development, accountability,
+                      and a winning culture built the right way.
+                    </p>
+                  </div>
+                  <div className="mx-auto w-full max-w-[560px]">
+                    <div className="overflow-hidden rounded-xl border border-yellow-500/30 bg-black/70 p-0.5 shadow-[0_16px_42px_-24px_rgba(0,0,0,0.95)]">
+                      <img
+                        src="/images/Lab%20U%20holding%20champtionship.jpeg"
+                        alt="LAB U players holding the championship trophy"
+                        className="block h-auto w-full rounded-[10px]"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* 3. Program overview */}
           <section className="border-b border-white/10 bg-zinc-950 py-16 md:py-20">
             <div className="mx-auto max-w-6xl px-4 md:px-6">
               <div className="grid gap-10 md:grid-cols-[1.1fr,1fr] md:items-center md:gap-14">
@@ -106,7 +145,7 @@ export default async function AthleticsPage() {
             </div>
           </section>
 
-          {/* 3. National, Regional, Boys Varsity, Girls Varsity — with team images */}
+          {/* 4. National, Regional, Boys Varsity, Girls Varsity — with team images */}
           <section
             id="teams"
             className="border-b border-white/10 bg-black py-16 md:py-20"
@@ -182,7 +221,7 @@ export default async function AthleticsPage() {
             </div>
           </section>
 
-          {/* Athlete Commitments Carousel */}
+          {/* 5. Athlete Commitments Carousel */}
           <AthleteCommitmentsCarousel
             key={carouselKey}
             title={cmsTitle}
@@ -190,7 +229,7 @@ export default async function AthleticsPage() {
             athletes={cmsAthletes}
           />
 
-          {/* 4. Expect to see this — game footage (moved up) */}
+          {/* 6. Expect to see this — game footage (moved up) */}
           <section className="border-b border-white/10 bg-zinc-950 py-16 md:py-20">
             <div className="mx-auto max-w-6xl px-4 md:px-6">
               <p className="text-xs font-semibold uppercase tracking-[0.3em] text-yellow-400/90">
@@ -229,7 +268,7 @@ export default async function AthleticsPage() {
             </div>
           </section>
 
-          {/* 5. D-1 style training philosophy */}
+          {/* 7. D-1 style training philosophy */}
           <section className="border-b border-white/10 bg-black py-16 md:py-20">
             <div className="mx-auto max-w-6xl px-4 md:px-6">
               <div className="grid gap-10 md:grid-cols-2 md:items-center md:gap-14">
@@ -273,7 +312,7 @@ export default async function AthleticsPage() {
             </div>
           </section>
 
-          {/* 6. Skill development + Performance training (with 3 training videos) */}
+          {/* 8. Skill development + Performance training (with 3 training videos) */}
           <section className="border-b border-white/10 bg-zinc-950 py-16 md:py-20">
             <div className="mx-auto max-w-6xl px-4 md:px-6">
               <p className="text-xs font-semibold uppercase tracking-[0.3em] text-yellow-400/90">
@@ -338,7 +377,7 @@ export default async function AthleticsPage() {
             </div>
           </section>
 
-          {/* 7. Daily training structure */}
+          {/* 9. Daily training structure */}
           <section className="border-b border-white/10 bg-black py-16 md:py-20">
             <div className="mx-auto max-w-6xl px-4 md:px-6">
               <p className="text-xs font-semibold uppercase tracking-[0.3em] text-yellow-400/90">
@@ -396,7 +435,7 @@ export default async function AthleticsPage() {
             </div>
           </section>
 
-          {/* 8. Competition and preparation */}
+          {/* 10. Competition and preparation */}
           <section className="border-b border-white/10 bg-black py-16 md:py-20">
             <div className="mx-auto max-w-6xl px-4 md:px-6">
               <div className="grid gap-10 md:grid-cols-[1fr,1.1fr] md:items-center md:gap-14">
@@ -432,7 +471,7 @@ export default async function AthleticsPage() {
             </div>
           </section>
 
-          {/* 9. Coaches — Coach Andre + speech video */}
+          {/* 11. Coaches — Coach Andre + speech video */}
           <section
             id="coaches"
             className="border-b border-white/10 bg-zinc-950 py-16 md:py-20"
@@ -514,7 +553,7 @@ export default async function AthleticsPage() {
             </div>
           </section>
 
-          {/* 10. Admissions CTA */}
+          {/* 12. Admissions CTA */}
           <AdmissionsCTASection />
         </MountStaggerReveal>
       </main>
