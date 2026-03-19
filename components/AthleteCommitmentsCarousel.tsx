@@ -40,7 +40,6 @@ export default function AthleteCommitmentsCarousel({
   athletes = DEFAULT_ATHLETES,
 }: AthleteCommitmentsCarouselProps) {
   const scrollRef = useRef<HTMLDivElement>(null);
-  const isJumpingRef = useRef(false);
   const setWidthRef = useRef(0);
 
   // Triple the list for seamless infinite scroll
@@ -59,63 +58,88 @@ export default function AthleteCommitmentsCarousel({
     setWidthRef.current = setWidth;
     const setInitial = () => {
       if (!el) return;
-      isJumpingRef.current = true;
       el.scrollLeft = setWidth;
-      requestAnimationFrame(() => { isJumpingRef.current = false; });
     };
     setInitial();
     const t = setTimeout(setInitial, 100);
     return () => clearTimeout(t);
   }, [athletes.length, athletesSignature]);
 
-  const handleScroll = () => {
-    const el = scrollRef.current;
-    if (!el || isJumpingRef.current) return;
-    const setWidth = setWidthRef.current || el.scrollWidth / 3;
-    const maxScroll = el.scrollWidth - el.clientWidth;
-    if (maxScroll <= 0) return;
-    // If we scrolled past the end of the second set, jump back to same position in second set
-    if (el.scrollLeft >= setWidth * 2 - 50) {
-      isJumpingRef.current = true;
-      el.scrollLeft = el.scrollLeft - setWidth;
-      requestAnimationFrame(() => { isJumpingRef.current = false; });
-    } else if (el.scrollLeft <= 50) {
-      isJumpingRef.current = true;
-      el.scrollLeft = el.scrollLeft + setWidth;
-      requestAnimationFrame(() => { isJumpingRef.current = false; });
-    }
-  };
-
+  // Auto side-scroll: continuous rAF updates for smooth movement.
+  // We also wrap at the “middle set” boundary to keep the carousel seamless.
   useEffect(() => {
     const el = scrollRef.current;
-    if (!el) return;
-    el.addEventListener("scroll", handleScroll, { passive: true });
-    return () => el.removeEventListener("scroll", handleScroll);
-  }, []);
+    if (!el || athletes.length === 0) return;
 
-  // Auto side-scroll only (no user scroll): start after layout, 1px every 120ms (~8 px/s)
-  useEffect(() => {
-    const el = scrollRef.current;
-    if (!el) return;
-    const isMobile =
-      typeof window !== "undefined" && window.innerWidth <= 640;
+    const prefersReducedMotion =
+      typeof window !== "undefined" &&
+      window.matchMedia &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    // Even if the OS requests reduced motion, we still scroll (just slower),
+    // since this carousel is meant to be continuously visible on the homepage.
 
-    // Mobile + desktop were too fast. We slow to a calmer pace:
-    // - desktop: ~1px every 240ms (~4.2 px/s)
-    // - mobile:  ~1px every 360ms (~2.8 px/s)
-    const msPerPixel = isMobile ? 360 : 240;
-    let intervalId: ReturnType<typeof setInterval> | null = null;
-    const timeoutId = setTimeout(() => {
-      intervalId = setInterval(() => {
-        if (isJumpingRef.current) return;
-        el.scrollBy({ left: 1, behavior: "auto" });
-      }, msPerPixel);
-    }, 400);
-    return () => {
-      clearTimeout(timeoutId);
-      if (intervalId) clearInterval(intervalId);
+    const pauseUntilRef = {current: 0} as {current: number};
+    const pause = () => {
+      pauseUntilRef.current = Date.now() + 2000;
     };
-  }, []);
+
+    // Pause auto-scroll briefly while the user interacts.
+    el.addEventListener("pointerdown", pause, {passive: true});
+    el.addEventListener("touchstart", pause, {passive: true});
+
+    let rafId = 0;
+    let lastTs = performance.now();
+
+    const tick = (ts: number) => {
+      const now = Date.now();
+      const dt = (ts - lastTs) / 1000;
+      lastTs = ts;
+
+      if (now < pauseUntilRef.current) {
+        rafId = requestAnimationFrame(tick);
+        return;
+      }
+
+      const isMobile =
+        typeof window !== "undefined" && window.innerWidth <= 640;
+
+      // Much slower than before; continuous movement feels smoother.
+      const speedPxPerSec = prefersReducedMotion
+        ? isMobile
+          ? 1.4
+          : 2.0
+        : isMobile
+          ? 2.0
+          : 3.0;
+
+      // Prefer cached width, but fall back if it hasn't been set yet.
+      const cardW =
+        typeof window !== "undefined" && window.innerWidth >= 640
+          ? CARD_WIDTH_SM
+          : CARD_WIDTH;
+      const setWidth =
+        setWidthRef.current || athletes.length * (cardW + GAP);
+
+      el.scrollLeft += speedPxPerSec * dt;
+
+      // Keep scroll position centered to avoid hitting the edges.
+      if (el.scrollLeft >= setWidth * 2) {
+        el.scrollLeft -= setWidth;
+      } else if (el.scrollLeft < setWidth) {
+        el.scrollLeft += setWidth;
+      }
+
+      rafId = requestAnimationFrame(tick);
+    };
+
+    rafId = requestAnimationFrame(tick);
+
+    return () => {
+      cancelAnimationFrame(rafId);
+      el.removeEventListener("pointerdown", pause);
+      el.removeEventListener("touchstart", pause);
+    };
+  }, [athletes.length, athletesSignature]);
 
   return (
     <section className="border-b border-white/10 bg-black py-16 md:py-20">
@@ -136,14 +160,14 @@ export default function AthleteCommitmentsCarousel({
           {/* Auto-scroll only; no arrows, no user scroll */}
           <div
             ref={scrollRef}
-            className="scrollbar-hide snap-x snap-mandatory flex gap-6 overflow-x-auto overflow-y-hidden pb-2 scroll-smooth px-1 md:gap-6 touch-pan-x select-none"
+            className="scrollbar-hide flex gap-6 overflow-x-auto overflow-y-hidden pb-2 px-1 md:gap-6 touch-pan-x select-none"
             style={{ overscrollBehavior: "none" }}
           >
             {infiniteList.map((athlete, index) => (
               <div
                 key={`${athlete.id ?? athlete.name}-${athlete.image}-${index}`}
                 data-carousel-card
-                className="group relative w-[280px] flex-shrink-0 snap-center sm:w-[320px]"
+                className="group relative w-[280px] flex-shrink-0 sm:w-[320px]"
               >
                 <div className="relative overflow-hidden rounded-xl border border-white/10 bg-zinc-950 transition-transform duration-300 ease-out group-hover:scale-[1.02]">
                   <div className="relative aspect-[3/4]">
