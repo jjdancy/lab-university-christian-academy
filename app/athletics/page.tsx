@@ -422,7 +422,7 @@ export default async function AthleticsPage() {
                 </div>
                 <div className="relative aspect-[4/3] overflow-hidden rounded-xl border border-white/10">
                   <img
-                    src="/images/action%20shot%203.jpeg"
+                    src="/images/action%20shot%205.jpeg"
                     alt="LAB U competition"
                     className="h-full w-full object-cover object-center"
                   />
