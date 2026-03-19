@@ -71,6 +71,12 @@ export default function Footer() {
             8016 Tower Point Dr • Charlotte, NC 28227
           </p>
           <p className="mt-1 text-white/70">(704) 315-1035</p>
+          <a
+            href="mailto:admin@labuniversityprep.com"
+            className="mt-2 block text-[0.7rem] text-white/60 transition-colors hover:text-yellow-300"
+          >
+            admin@labuniversityprep.com
+          </a>
           <div className="mt-4 flex items-center gap-4">
             {SOCIAL_LINKS.map(({ label, href, icon }) => (
               <a
@@ -88,7 +94,7 @@ export default function Footer() {
         </div>
         <div className="space-y-1 text-right md:text-left">
           <p className="text-[0.7rem] uppercase tracking-[0.25em]">
-            Christ-Centered • College-Prep • Elite Development
+            Learn • Believe • Achieve
           </p>
           <p className="text-[0.7rem] text-white/50">
             © {new Date().getFullYear()} LAB University Christian Academy. All
