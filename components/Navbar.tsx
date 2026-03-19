@@ -122,8 +122,9 @@ export default function Navbar() {
             <summary className="cursor-pointer list-none rounded-full border border-white/15 bg-black/50 px-4 py-2 text-xs font-semibold uppercase tracking-[0.22em] text-white/70 transition-colors hover:bg-white/5 hover:text-yellow-300">
               Menu
             </summary>
-            <div className="absolute left-0 right-0 top-[72px] z-50 mx-auto max-w-6xl px-4">
-              <div className="rounded-2xl border border-white/10 bg-black/95 p-4 shadow-xl shadow-black/60">
+            <div className="absolute left-0 right-0 top-[72px] z-50 w-full overflow-x-hidden">
+              <div className="mx-auto w-full max-w-6xl px-4">
+                <div className="rounded-2xl border border-white/10 bg-black/95 p-4 shadow-xl shadow-black/60">
                 <div className="mb-3 flex flex-col gap-2">
                   <a
                     href="/admissions#tour"
@@ -189,6 +190,7 @@ export default function Navbar() {
                   </ul>
                 </nav>
               </div>
+            </div>
             </div>
           </details>
         </div>

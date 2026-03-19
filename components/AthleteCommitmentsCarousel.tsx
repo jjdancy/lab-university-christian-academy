@@ -97,7 +97,11 @@ export default function AthleteCommitmentsCarousel({
   useEffect(() => {
     const el = scrollRef.current;
     if (!el) return;
-    const msPerPixel = 15;
+    const isMobile =
+      typeof window !== "undefined" && window.innerWidth <= 640;
+
+    // Mobile was too fast; slow it down significantly.
+    const msPerPixel = isMobile ? 180 : 90;
     let intervalId: ReturnType<typeof setInterval> | null = null;
     const timeoutId = setTimeout(() => {
       intervalId = setInterval(() => {
