@@ -2,8 +2,12 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import MountStaggerReveal from "@/components/MountStaggerReveal";
 import AdmissionsCTASection from "@/components/AdmissionsCTASection";
+import {getAcademicsElectivesSection} from "@/lib/sanity/academicsElectives";
 
-export default function AcademicsPage() {
+export const revalidate = 60;
+
+export default async function AcademicsPage() {
+  const electives = await getAcademicsElectivesSection();
   return (
     <div className="min-h-screen bg-black text-white">
       <Navbar />
@@ -300,43 +304,96 @@ export default function AcademicsPage() {
             </div>
           </section>
 
-          {/* 6. STEM & Electives — with image and CTA */}
-          <section id="stem" className="border-b border-white/10 bg-zinc-950 py-16 md:py-20">
+          {/* 6. Electives & innovation (CMS — edit under Academics in Sanity) */}
+          <section
+            id="electives"
+            className="border-b border-white/10 bg-zinc-950 py-16 md:py-20 scroll-mt-24"
+          >
             <div className="mx-auto max-w-6xl px-4 md:px-6">
-              <div className="grid gap-10 md:grid-cols-[1.1fr,1fr] md:items-center md:gap-14">
+              <div className="grid gap-10 md:grid-cols-[1.1fr,1fr] md:items-start md:gap-14">
                 <div>
                   <p className="text-xs font-semibold uppercase tracking-[0.3em] text-yellow-400/90">
-                    Beyond the Core
+                    {electives.eyebrow}
                   </p>
                   <h2 className="mt-3 text-2xl font-semibold tracking-tight text-white sm:text-3xl">
-                    STEM focus and afternoon electives.
+                    {electives.title}
                   </h2>
                   <p className="mt-4 text-sm leading-relaxed text-white/80">
-                    Students engage with math, science, technology, and
-                    engineering content that prepares them for modern careers and
-                    college majors—while building problem-solving skills with
-                    creativity and discipline.
+                    {electives.intro}
                   </p>
-                  <p className="mt-3 text-sm text-white/75">
-                    Afternoon electives include coding, digital media,
-                    broadcasting, and basketball-specific modules. Innovation
-                    labs and hands-on projects round out the academic experience.
-                  </p>
-                  <a
-                    href="/electives"
-                    className="mt-6 inline-block rounded-full border border-yellow-400/60 px-5 py-2.5 text-xs font-semibold uppercase tracking-[0.2em] text-yellow-300 transition-colors hover:bg-yellow-400/10"
-                  >
-                    Explore Electives
-                  </a>
+                  {electives.paragraph2 ? (
+                    <p className="mt-3 text-sm text-white/75">
+                      {electives.paragraph2}
+                    </p>
+                  ) : null}
+
+                  <div className="mt-8 rounded-2xl border border-yellow-500/30 bg-black/50 px-5 py-4 md:px-6 md:py-5">
+                    <p className="text-sm font-semibold text-yellow-300">
+                      {electives.scheduleTitle}
+                    </p>
+                    <p className="mt-2 text-sm leading-relaxed text-white/80">
+                      {electives.scheduleBody}
+                    </p>
+                  </div>
+
+                  {electives.ctaLabel && electives.ctaHref ? (
+                    <a
+                      href={electives.ctaHref}
+                      className="mt-6 inline-block rounded-full border border-yellow-400/60 px-5 py-2.5 text-xs font-semibold uppercase tracking-[0.2em] text-yellow-300 transition-colors hover:bg-yellow-400/10"
+                    >
+                      {electives.ctaLabel}
+                    </a>
+                  ) : null}
                 </div>
                 <div className="relative aspect-[4/3] overflow-hidden rounded-xl border border-white/10">
                   <img
-                    src="/images/little%20kids.jpeg"
-                    alt="LAB U students"
+                    src={electives.sideImageUrl}
+                    alt={electives.sideImageAlt}
                     className="h-full w-full object-cover object-center"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                 </div>
+              </div>
+
+              <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                {electives.cards.map((card, i) => (
+                  <div
+                    key={`${card.title}-${i}`}
+                    className="flex flex-col overflow-hidden rounded-2xl border border-white/10 bg-black/60"
+                  >
+                    {card.imageUrl ? (
+                      <div className="relative aspect-[16/10] w-full shrink-0">
+                        <img
+                          src={card.imageUrl}
+                          alt={card.imageAlt ?? card.title}
+                          className="h-full w-full object-cover object-center"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
+                      </div>
+                    ) : null}
+                    <div className="flex flex-1 flex-col gap-3 p-5">
+                      <div className="flex items-start gap-3">
+                        {card.iconUrl ? (
+                          <img
+                            src={card.iconUrl}
+                            alt={card.iconAlt ?? ""}
+                            className="h-10 w-10 shrink-0 rounded-lg border border-yellow-500/30 object-contain bg-zinc-900 p-1"
+                          />
+                        ) : (
+                          <span className="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-yellow-400" />
+                        )}
+                        <div>
+                          <h3 className="text-sm font-semibold text-yellow-200/95">
+                            {card.title}
+                          </h3>
+                          <p className="mt-2 text-xs leading-relaxed text-white/70">
+                            {card.description}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
           </section>

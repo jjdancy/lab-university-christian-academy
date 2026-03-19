@@ -3,6 +3,8 @@
 import { useRef, useEffect } from "react";
 
 export type AthleteCommitment = {
+  /** Stable id for React keys when CMS swaps athletes */
+  id?: string;
   name: string;
   image: string;
   imageAlt: string;
@@ -44,6 +46,11 @@ export default function AthleteCommitmentsCarousel({
   // Triple the list for seamless infinite scroll
   const infiniteList = [...athletes, ...athletes, ...athletes];
 
+  /** Re-run scroll setup when names/images change, not only when count changes */
+  const athletesSignature = athletes
+    .map((a) => `${a.id ?? a.name}|${a.image}`)
+    .join(";;");
+
   useEffect(() => {
     const el = scrollRef.current;
     if (!el || athletes.length === 0) return;
@@ -59,7 +66,7 @@ export default function AthleteCommitmentsCarousel({
     setInitial();
     const t = setTimeout(setInitial, 100);
     return () => clearTimeout(t);
-  }, [athletes.length]);
+  }, [athletes.length, athletesSignature]);
 
   const handleScroll = () => {
     const el = scrollRef.current;
@@ -129,7 +136,7 @@ export default function AthleteCommitmentsCarousel({
           >
             {infiniteList.map((athlete, index) => (
               <div
-                key={`${athlete.name}-${index}`}
+                key={`${athlete.id ?? athlete.name}-${athlete.image}-${index}`}
                 data-carousel-card
                 className="group relative w-[280px] flex-shrink-0 snap-center sm:w-[320px]"
               >
@@ -139,6 +146,8 @@ export default function AthleteCommitmentsCarousel({
                       src={athlete.image}
                       alt={athlete.imageAlt}
                       className="h-full w-full object-cover object-center"
+                      loading="lazy"
+                      decoding="async"
                     />
                     {/* Hover overlay: gradient + name */}
                     <div className="absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-black/85 via-black/30 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100">

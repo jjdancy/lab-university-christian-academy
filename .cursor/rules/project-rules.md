@@ -205,3 +205,4 @@ Avoid:
 11. components
 Prefer updating existing components rather than creating duplicates.
 
+12. whatever is added make sure the sanity studio page is updated accoridinglt

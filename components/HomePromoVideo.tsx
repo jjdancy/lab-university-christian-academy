@@ -2,7 +2,24 @@
 
 import { useState, useRef } from "react";
 
-export default function HomePromoVideo() {
+export type HomePromoVideoProps = {
+  sectionLabel?: string;
+  heading?: string;
+  description?: string;
+  videoSrc?: string;
+  ctaLabel?: string;
+  ctaHref?: string;
+};
+
+export default function HomePromoVideo({
+  sectionLabel = "About Us",
+  heading = "Faith & leadership at the heart of everything we do.",
+  description =
+    "See LAB U in action — Christ-centered education for scholars, leaders, and athletes. One academy.",
+  videoSrc = "/videos/compressed%20promo.mp4",
+  ctaLabel = "Our mission & story",
+  ctaHref = "/about",
+}: HomePromoVideoProps) {
   const [isPlaying, setIsPlaying] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
 
@@ -19,14 +36,13 @@ export default function HomePromoVideo() {
     <section className="relative border-b border-white/10 bg-black py-10 md:py-14">
       <div className="mx-auto max-w-4xl px-4 md:px-6">
         <p className="mb-4 text-center text-xs font-semibold uppercase tracking-[0.3em] text-yellow-400/90">
-          About Us
+          {sectionLabel}
         </p>
         <p className="mb-2 text-center text-base font-semibold tracking-tight text-white sm:text-lg md:text-xl">
-          Faith & leadership at the heart of everything we do.
+          {heading}
         </p>
         <p className="mb-6 text-center text-sm text-white/80">
-          See LAB U in action — Christ-centered education for scholars, leaders,
-          and athletes. One academy.
+          {description}
         </p>
 
         {/* Smaller video box: full frame visible, viewer can go fullscreen */}
@@ -35,7 +51,7 @@ export default function HomePromoVideo() {
             <video
               ref={videoRef}
               className="h-full w-full object-contain object-center"
-              src="/videos/compressed%20promo.mp4"
+              src={videoSrc}
               loop
               playsInline
               controls
@@ -70,10 +86,10 @@ export default function HomePromoVideo() {
 
         <p className="mt-4 text-center">
           <a
-            href="/about"
+            href={ctaHref}
             className="inline-block rounded-full border border-white/30 px-5 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-white transition-colors hover:bg-white/10"
           >
-            Our mission & story
+            {ctaLabel}
           </a>
         </p>
       </div>
