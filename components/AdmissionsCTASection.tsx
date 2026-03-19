@@ -1,3 +1,5 @@
+import {SCHEDULE_TOUR_URL} from "@/lib/constants";
+
 export default function AdmissionsCTASection() {
   return (
     <section
@@ -37,7 +39,7 @@ export default function AdmissionsCTASection() {
           </a>
           <a
             id="tour"
-            href="/admissions#tour"
+            href={SCHEDULE_TOUR_URL}
             className="rounded-full border border-white/20 px-8 py-3 text-xs font-semibold uppercase tracking-[0.25em] text-white/80 transition-colors hover:border-yellow-400 hover:text-yellow-300"
           >
             Schedule a Tour

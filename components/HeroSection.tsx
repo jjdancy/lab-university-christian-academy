@@ -1,4 +1,4 @@
-import {PLAYBOOK_REGISTER_URL} from "@/lib/constants";
+import {PLAYBOOK_REGISTER_URL, SCHEDULE_TOUR_URL} from "@/lib/constants";
 import HeroBackgroundVideo from "./HeroBackgroundVideo";
 
 export type HeroSectionProps = {
@@ -39,7 +39,7 @@ export default function HeroSection({
   applyNowLabel = "Apply Now",
   scheduleTourLabel = "Schedule a Tour",
   applyNowHref = PLAYBOOK_REGISTER_URL,
-  scheduleTourHref = "/admissions#tour",
+  scheduleTourHref = SCHEDULE_TOUR_URL,
 
   k12BadgeMain = "K–12",
   k12BadgeSub = "All grade levels",

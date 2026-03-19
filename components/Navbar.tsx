@@ -1,3 +1,6 @@
+import {SCHEDULE_TOUR_URL} from "@/lib/constants";
+import MobileNavDropdown from "@/components/MobileNavDropdown";
+
 const navLinks = [
   { label: "About", href: "/about" },
   {
@@ -28,7 +31,7 @@ const navLinks = [
       { label: "Admissions Process", href: "/admissions#process" },
       { label: "Who It's For", href: "/admissions#who" },
       { label: "FAQs", href: "/admissions#faqs" },
-      { label: "Schedule a Tour", href: "/admissions#tour" },
+      { label: "Schedule a Tour", href: SCHEDULE_TOUR_URL },
       {
         label: "Apply Now",
         href:
@@ -37,8 +40,6 @@ const navLinks = [
     ]
   }
 ];
-
-import MobileNavDropdown from "@/components/MobileNavDropdown";
 
 export default function Navbar() {
   return (
@@ -120,14 +121,14 @@ export default function Navbar() {
 
         <MobileNavDropdown
           links={navLinks}
-          tourHref="/admissions#tour"
+          tourHref={SCHEDULE_TOUR_URL}
           applyHref="https://labuniversityprep.playbookapi.com/programs/register/"
         />
 
         {/* CTAs — aligned right */}
         <div className="hidden shrink-0 items-center gap-4 md:flex">
           <a
-            href="/admissions#tour"
+            href={SCHEDULE_TOUR_URL}
             className="text-xs font-semibold uppercase tracking-[0.2em] text-white/70 transition-colors hover:text-white"
           >
             Schedule a Tour

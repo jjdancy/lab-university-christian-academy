@@ -2,7 +2,7 @@ import Navbar from "@/components/Navbar";
 import AdmissionsCTASection from "@/components/AdmissionsCTASection";
 import Footer from "@/components/Footer";
 import MountStaggerReveal from "@/components/MountStaggerReveal";
-import {PLAYBOOK_REGISTER_URL} from "@/lib/constants";
+import {PLAYBOOK_REGISTER_URL, SCHEDULE_TOUR_URL} from "@/lib/constants";
 
 export default function AdmissionsPage() {
   return (
@@ -42,7 +42,7 @@ export default function AdmissionsPage() {
                   Apply Now
                 </a>
                 <a
-                  href="/admissions#tour"
+                  href={SCHEDULE_TOUR_URL}
                   className="rounded-full border border-white/30 px-7 py-3 text-xs font-semibold uppercase tracking-[0.28em] text-white transition-colors hover:border-yellow-400 hover:text-yellow-300"
                 >
                   Schedule a Tour
@@ -153,7 +153,7 @@ export default function AdmissionsPage() {
                   Apply Now
                 </a>
                 <a
-                  href="/admissions#tour"
+                  href={SCHEDULE_TOUR_URL}
                   className="rounded-full border border-white/30 px-6 py-2.5 text-xs font-semibold uppercase tracking-[0.28em] text-white transition-colors hover:border-yellow-400 hover:text-yellow-300"
                 >
                   Schedule a Tour

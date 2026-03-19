@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import PageAnimation from "@/components/PageAnimation";
+import {ScheduleTourModalProvider} from "@/components/ScheduleTourModalProvider";
 
 export const metadata: Metadata = {
   title: "LAB University Christian Academy",
@@ -16,7 +17,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="bg-black text-white antialiased">
-        <PageAnimation>{children}</PageAnimation>
+        <ScheduleTourModalProvider>
+          <PageAnimation>{children}</PageAnimation>
+        </ScheduleTourModalProvider>
       </body>
     </html>
   );

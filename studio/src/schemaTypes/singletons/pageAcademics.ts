@@ -244,7 +244,7 @@ export const pageAcademics = defineType({
           title: "CTA link",
           type: "string",
           description:
-            "Where the button takes visitors. Example: `/admissions#tour`",
+            "Where the button takes visitors. Example: `/schedule-tour`",
         }),
         defineField({
           name: "sideImage",

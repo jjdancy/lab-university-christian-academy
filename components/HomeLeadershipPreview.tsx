@@ -1,4 +1,4 @@
-import {PLAYBOOK_REGISTER_URL} from "@/lib/constants";
+import {PLAYBOOK_REGISTER_URL, SCHEDULE_TOUR_URL} from "@/lib/constants";
 
 export type HomeLeadershipPreviewProps = {
   backgroundImageSrc?: string;
@@ -23,7 +23,7 @@ export default function HomeLeadershipPreview({
   applyLabel = "Apply Now",
   applyHref = PLAYBOOK_REGISTER_URL,
   tourLabel = "Schedule a Tour",
-  tourHref = "/admissions#tour",
+  tourHref = SCHEDULE_TOUR_URL,
   limitedSeatsText = "Seats are limited. Early applications are strongly encouraged.",
 }: HomeLeadershipPreviewProps) {
   return (
