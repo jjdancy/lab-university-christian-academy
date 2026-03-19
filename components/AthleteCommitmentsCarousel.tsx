@@ -130,9 +130,8 @@ export default function AthleteCommitmentsCarousel({
           {/* Auto-scroll only; no arrows, no user scroll */}
           <div
             ref={scrollRef}
-            className="scrollbar-hide flex gap-6 overflow-x-auto overflow-y-hidden pb-2 scroll-smooth px-1 md:gap-6 touch-none select-none"
+            className="scrollbar-hide snap-x snap-mandatory flex gap-6 overflow-x-auto overflow-y-hidden pb-2 scroll-smooth px-1 md:gap-6 touch-pan-x select-none"
             style={{ overscrollBehavior: "none" }}
-            onWheel={(e) => e.preventDefault()}
           >
             {infiniteList.map((athlete, index) => (
               <div

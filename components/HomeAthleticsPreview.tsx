@@ -50,14 +50,32 @@ export default function HomeAthleticsPreview({
   return (
     <section className="border-b border-white/10 bg-black py-16 md:py-24">
       <div className="mx-auto flex max-w-6xl flex-col gap-10 px-4 md:flex-row md:items-center md:gap-14 md:px-6">
-        {/* Left: four team images in 2x2 grid */}
-        <div className="grid w-full shrink-0 grid-cols-2 gap-3 md:w-[360px]">
+        {/* Text first on mobile, second on desktop */}
+        <div className="order-1 flex-1 space-y-5 md:order-2">
+          <p className="text-xs font-semibold uppercase tracking-[0.3em] text-yellow-400/90">
+            {eyebrow}
+          </p>
+          <h2 className="text-3xl font-semibold tracking-tight text-white sm:text-4xl md:text-[2.75rem]">
+            {headline}
+          </h2>
+          <p className="text-base leading-relaxed text-white/70 md:text-lg">
+            {description}
+          </p>
+          <a
+            href={ctaHref}
+            className="hidden text-sm font-semibold uppercase tracking-[0.25em] text-yellow-300 underline-offset-4 hover:underline md:inline-flex"
+          >
+            {ctaLabel}
+          </a>
+        </div>
+
+        {/* Photos after heading/text on mobile, left on desktop */}
+        <div className="order-2 grid w-full shrink-0 grid-cols-2 gap-3 md:order-1 md:w-[360px]">
           {finalTeams.slice(0, 4).map((team, idx) => {
             const borderClass =
-              idx === 0
-                ? "border-yellow-500/30"
-                : "border-white/15";
-            const textClass = idx === 0 ? "text-yellow-300" : "text-white/90";
+              idx === 0 ? "border-yellow-500/30" : "border-white/15";
+            const textClass =
+              idx === 0 ? "text-yellow-300" : "text-white/90";
             return (
               <div
                 key={`${team.label}-${idx}`}
@@ -78,20 +96,12 @@ export default function HomeAthleticsPreview({
             );
           })}
         </div>
-        {/* Right: text content — larger typography */}
-        <div className="flex-1 space-y-5">
-          <p className="text-xs font-semibold uppercase tracking-[0.3em] text-yellow-400/90">
-            {eyebrow}
-          </p>
-          <h2 className="text-3xl font-semibold tracking-tight text-white sm:text-4xl md:text-[2.75rem]">
-            {headline}
-          </h2>
-          <p className="text-base leading-relaxed text-white/70 md:text-lg">
-            {description}
-          </p>
+
+        {/* CTA at the bottom on mobile only */}
+        <div className="md:hidden">
           <a
             href={ctaHref}
-            className="inline-flex text-sm font-semibold uppercase tracking-[0.25em] text-yellow-300 underline-offset-4 hover:underline"
+            className="inline-flex w-full justify-center text-sm font-semibold uppercase tracking-[0.25em] text-yellow-300 underline-offset-4 hover:underline"
           >
             {ctaLabel}
           </a>

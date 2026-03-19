@@ -116,6 +116,83 @@ export default function Navbar() {
           </ul>
         </nav>
 
+        {/* Mobile menu */}
+        <div className="md:hidden flex items-center gap-3">
+          <details className="relative group">
+            <summary className="cursor-pointer list-none rounded-full border border-white/15 bg-black/50 px-4 py-2 text-xs font-semibold uppercase tracking-[0.22em] text-white/70 transition-colors hover:bg-white/5 hover:text-yellow-300">
+              Menu
+            </summary>
+            <div className="absolute left-0 right-0 top-[72px] z-50 mx-auto max-w-6xl px-4">
+              <div className="rounded-2xl border border-white/10 bg-black/95 p-4 shadow-xl shadow-black/60">
+                <div className="mb-3 flex flex-col gap-2">
+                  <a
+                    href="/admissions#tour"
+                    className="rounded-full border border-white/20 px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-white/80 transition-colors hover:border-yellow-400 hover:text-yellow-300 text-center"
+                  >
+                    Schedule a Tour
+                  </a>
+                  <a
+                    href="https://labuniversityprep.playbookapi.com/programs/register/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="rounded-full bg-yellow-400 px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-black shadow-lg shadow-yellow-500/30 transition-transform hover:-translate-y-0.5 hover:bg-yellow-300 text-center"
+                  >
+                    Apply Now
+                  </a>
+                </div>
+
+                <nav aria-label="Mobile navigation">
+                  <ul className="flex flex-col gap-1 text-sm font-semibold">
+                    {navLinks.map((link) => {
+                      if (link.items) {
+                        return (
+                          <li key={link.href}>
+                            <div className="mt-2 px-2 text-xs font-semibold uppercase tracking-[0.22em] text-yellow-300/90">
+                              {link.label}
+                            </div>
+                            <div className="flex flex-col">
+                              {link.items.map((item) => (
+                                <a
+                                  key={item.href}
+                                  href={item.href}
+                                  target={
+                                    item.href.startsWith("http")
+                                      ? "_blank"
+                                      : undefined
+                                  }
+                                  rel={
+                                    item.href.startsWith("http")
+                                      ? "noopener noreferrer"
+                                      : undefined
+                                  }
+                                  className="rounded-xl px-2 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-white/70 transition-colors hover:bg-white/5 hover:text-yellow-300"
+                                >
+                                  {item.label}
+                                </a>
+                              ))}
+                            </div>
+                          </li>
+                        );
+                      }
+
+                      return (
+                        <li key={link.href}>
+                          <a
+                            href={link.href}
+                            className="mt-2 rounded-xl px-2 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-white/70 transition-colors hover:bg-white/5 hover:text-yellow-300 block"
+                          >
+                            {link.label}
+                          </a>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </nav>
+              </div>
+            </div>
+          </details>
+        </div>
+
         {/* CTAs — aligned right */}
         <div className="hidden shrink-0 items-center gap-4 md:flex">
           <a
