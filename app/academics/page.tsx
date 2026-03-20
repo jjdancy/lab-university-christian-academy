@@ -110,7 +110,7 @@ export default async function AcademicsPage() {
           {/* 3. How the Day Works — with image */}
           <section id="schedule" className="border-b border-white/10 bg-black py-16 md:py-20">
             <div className="mx-auto max-w-6xl px-4 md:px-6">
-              <div className="grid gap-10 md:grid-cols-[1fr,1.1fr] md:items-center md:gap-14">
+              <div className="grid gap-10 md:grid-cols-[1fr,1.1fr] md:items-stretch md:gap-14">
                 <div className="space-y-6">
                   <p className="text-xs font-semibold uppercase tracking-[0.3em] text-yellow-400/90">
                     Daily Structure
@@ -148,13 +148,13 @@ export default async function AcademicsPage() {
                     ))}
                   </div>
                 </div>
-                <div className="relative aspect-[4/3] overflow-hidden rounded-xl border border-white/10">
+                <div className="relative min-h-[260px] h-full overflow-hidden rounded-xl border border-white/10 md:min-h-0">
                   <img
-                    src="/images/classroom%202.jpeg"
-                    alt="Students in class at LAB U"
-                    className="h-full w-full object-cover object-center"
+                    src="/images/teavher%20helping%20student.jpeg"
+                    alt="Teacher helping a student with coursework at LAB U"
+                    className="absolute inset-0 h-full w-full object-cover object-center"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
                 </div>
               </div>
             </div>
