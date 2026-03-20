@@ -126,10 +126,10 @@ export default function Navbar() {
         />
 
         {/* CTAs — aligned right */}
-        <div className="hidden shrink-0 items-center gap-4 md:flex">
+        <div className="hidden shrink-0 items-center gap-3 md:flex">
           <a
             href={SCHEDULE_TOUR_URL}
-            className="text-xs font-semibold uppercase tracking-[0.2em] text-white/70 transition-colors hover:text-white"
+            className="rounded-full border border-yellow-400/65 bg-yellow-400/5 px-5 py-2.5 text-xs font-semibold uppercase tracking-[0.2em] text-yellow-300 shadow-sm shadow-yellow-500/10 transition-all hover:-translate-y-0.5 hover:border-yellow-400 hover:bg-yellow-400/10 hover:text-yellow-200"
           >
             Schedule a Tour
           </a>
