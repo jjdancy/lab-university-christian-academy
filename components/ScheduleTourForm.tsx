@@ -9,9 +9,22 @@ type TourFormData = {
   emailAddress: string;
   phoneNumber: string;
   preferredTourDate: string;
+  preferredElective: string;
   message: string;
   website: string;
 };
+
+const PREFERRED_ELECTIVE_OPTIONS = [
+  {value: "Basketball", label: "Basketball"},
+  {value: "Coding", label: "Coding"},
+  {value: "Broadcasting", label: "Broadcasting"},
+  {value: "Photography", label: "Photography"},
+  {
+    value: "Podcasting / Media Production",
+    label: "Podcasting / Media Production",
+  },
+  {value: "Undecided", label: "Undecided"},
+] as const;
 
 type FormErrors = Partial<Record<keyof TourFormData, string>>;
 
@@ -22,6 +35,7 @@ const initialForm: TourFormData = {
   emailAddress: "",
   phoneNumber: "",
   preferredTourDate: "",
+  preferredElective: "",
   message: "",
   website: "",
 };
@@ -33,6 +47,7 @@ const requiredFields: (keyof TourFormData)[] = [
   "emailAddress",
   "phoneNumber",
   "preferredTourDate",
+  "preferredElective",
 ];
 
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -195,6 +210,56 @@ export default function ScheduleTourForm({
           error={errors.preferredTourDate}
           required
         />
+        <div className="md:col-span-2">
+          <label
+            htmlFor="preferredElective"
+            className="mb-1 block text-xs font-semibold uppercase tracking-[0.18em] text-white/80"
+          >
+            Preferred Elective{" "}
+            <span className="text-yellow-400" aria-hidden>
+              *
+            </span>
+          </label>
+          <select
+            id="preferredElective"
+            name="preferredElective"
+            required
+            value={form.preferredElective}
+            onChange={(event) =>
+              setForm((prev) => ({
+                ...prev,
+                preferredElective: event.target.value,
+              }))
+            }
+            className="min-h-[48px] w-full cursor-pointer appearance-none rounded-lg border border-white/20 bg-black/40 bg-[length:1rem] bg-[right_0.75rem_center] bg-no-repeat py-3 pl-3 pr-10 text-sm text-white outline-none transition focus:border-yellow-400 [color-scheme:dark] [-webkit-appearance:none] [-moz-appearance:none]"
+            style={{
+              backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23e4c76a'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E")`,
+            }}
+            aria-invalid={Boolean(errors.preferredElective)}
+            aria-describedby={
+              errors.preferredElective
+                ? "preferredElective-error"
+                : undefined
+            }
+          >
+            <option value="" disabled>
+              Select an elective
+            </option>
+            {PREFERRED_ELECTIVE_OPTIONS.map((opt) => (
+              <option key={opt.value} value={opt.value}>
+                {opt.label}
+              </option>
+            ))}
+          </select>
+          {errors.preferredElective ? (
+            <p
+              id="preferredElective-error"
+              className="mt-1 text-xs text-red-300"
+            >
+              {errors.preferredElective}
+            </p>
+          ) : null}
+        </div>
       </div>
 
       <div className="mt-4">

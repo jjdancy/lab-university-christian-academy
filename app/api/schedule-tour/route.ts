@@ -8,9 +8,19 @@ type TourPayload = {
   emailAddress?: string;
   phoneNumber?: string;
   preferredTourDate?: string;
+  preferredElective?: string;
   message?: string;
   website?: string;
 };
+
+const ALLOWED_PREFERRED_ELECTIVES = new Set([
+  "Basketball",
+  "Coding",
+  "Broadcasting",
+  "Photography",
+  "Podcasting / Media Production",
+  "Undecided",
+]);
 
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const maxFieldLength = 300;
@@ -43,6 +53,7 @@ export async function POST(request: Request) {
     const emailAddress = clean(body.emailAddress);
     const phoneNumber = clean(body.phoneNumber);
     const preferredTourDate = clean(body.preferredTourDate);
+    const preferredElective = clean(body.preferredElective);
     const message = clean(body.message);
     const safeParentName = escapeHtml(parentFullName);
     const safeStudentName = escapeHtml(studentName);
@@ -50,6 +61,7 @@ export async function POST(request: Request) {
     const safeEmail = escapeHtml(emailAddress);
     const safePhone = escapeHtml(phoneNumber);
     const safeDate = escapeHtml(preferredTourDate);
+    const safeElective = escapeHtml(preferredElective);
     const safeMessage = escapeHtml(message || "N/A");
 
     if (
@@ -58,7 +70,8 @@ export async function POST(request: Request) {
       !studentGrade ||
       !emailAddress ||
       !phoneNumber ||
-      !preferredTourDate
+      !preferredTourDate ||
+      !preferredElective
     ) {
       return NextResponse.json(
         {error: "Please complete all required fields."},
@@ -69,6 +82,13 @@ export async function POST(request: Request) {
     if (!emailPattern.test(emailAddress)) {
       return NextResponse.json(
         {error: "Please enter a valid email address."},
+        {status: 400}
+      );
+    }
+
+    if (!ALLOWED_PREFERRED_ELECTIVES.has(preferredElective)) {
+      return NextResponse.json(
+        {error: "Please select a valid preferred elective."},
         {status: 400}
       );
     }
@@ -88,6 +108,7 @@ export async function POST(request: Request) {
       emailAddress,
       phoneNumber,
       preferredTourDate,
+      preferredElective,
       message,
     ];
 
@@ -125,6 +146,7 @@ export async function POST(request: Request) {
         `Email Address: ${emailAddress}`,
         `Phone Number: ${phoneNumber}`,
         `Preferred Tour Date: ${preferredTourDate}`,
+        `Preferred Elective: ${preferredElective}`,
         `Message: ${message || "N/A"}`,
       ].join("\n"),
       html: `
@@ -135,6 +157,7 @@ export async function POST(request: Request) {
         <p><strong>Email Address:</strong> ${safeEmail}</p>
         <p><strong>Phone Number:</strong> ${safePhone}</p>
         <p><strong>Preferred Tour Date:</strong> ${safeDate}</p>
+        <p><strong>Preferred Elective:</strong> ${safeElective}</p>
         <p><strong>Message:</strong> ${safeMessage}</p>
       `,
     });
