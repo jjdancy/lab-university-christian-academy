@@ -145,7 +145,7 @@ export default async function AthleticsPage() {
             </div>
           </section>
 
-          {/* 4. National, Regional, Boys Varsity, Girls Varsity — with team images */}
+          {/* 4. Team structure — image cards + post-grad placeholder */}
           <section
             id="teams"
             className="border-b border-white/10 bg-black py-16 md:py-20"
@@ -155,13 +155,13 @@ export default async function AthleticsPage() {
                 Our Teams
               </p>
               <h2 className="mt-3 text-2xl font-semibold tracking-tight text-white sm:text-3xl">
-                National. Regional. Boys & Girls Varsity.
+                National. Regional. Varsity. Post-Grad.
               </h2>
               <p className="mt-3 max-w-2xl text-sm text-white/75">
-                Four teams—each with a challenging schedule and clear path to
-                growth.
+                Five teams—each with a challenging schedule and clear path to
+                growth and next-level development.
               </p>
-              <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+              <div className="mt-10 grid grid-cols-1 items-start justify-items-center gap-7 md:grid-cols-2 xl:grid-cols-6">
                 {[
                   {
                     title: "National Team",
@@ -190,30 +190,77 @@ export default async function AthleticsPage() {
                     alt: "LAB U Girls Varsity",
                     desc: "Competes against top local and regional talent. Builds fundamentals, habits, and leadership while earning exposure at showcases.",
                     label: "Girls Varsity"
+                  },
+                  {
+                    title: "Post-Grad Team",
+                    image: "/images/postgrad.jpeg",
+                    alt: "LAB U Post-Grad Team",
+                    desc: "Our Post-Grad Team is built for athletes seeking an additional year of development before college.",
+                    points: [
+                      "Season: October to March",
+                      "High-level competition",
+                      "Daily training + recruiting support for college placement",
+                      "For serious players only",
+                      "Domestic & international players accepted",
+                      "Only 12 roster spots available",
+                      "Players must be under 20 at enrollment",
+                      "Contact: admin@labuniversityprep.com"
+                    ],
+                    label: "Post-Grad"
                   }
-                ].map((team) => (
+                ].map((team, index) => (
                   <div
                     key={team.label}
-                    className="overflow-hidden rounded-2xl border border-white/10 bg-zinc-950/80"
+                    className={`w-full max-w-[28rem] overflow-hidden rounded-2xl border border-white/10 bg-zinc-950/80 xl:col-span-2 ${
+                      index === 3
+                        ? "xl:col-start-2"
+                        : index === 4
+                          ? "xl:col-start-4"
+                          : ""
+                    }`}
                   >
-                    <div className="relative aspect-[4/3]">
-                      <img
-                        src={team.image}
-                        alt={team.alt}
-                        className="h-full w-full object-cover object-center"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent" />
-                      <span className="absolute bottom-3 left-3 text-xs font-semibold uppercase tracking-wider text-yellow-300">
-                        {team.label}
-                      </span>
-                    </div>
+                    {team.image ? (
+                      <div className="relative aspect-[4/3]">
+                        <img
+                          src={team.image}
+                          alt={team.alt}
+                          className="h-full w-full object-cover object-center"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent" />
+                        <span className="absolute bottom-3 left-3 text-xs font-semibold uppercase tracking-wider text-yellow-300">
+                          {team.label}
+                        </span>
+                      </div>
+                    ) : (
+                      <div className="relative aspect-[4/3] overflow-hidden bg-gradient-to-br from-zinc-900 via-black to-zinc-950">
+                        <img
+                          src="/images/coming-soon-sticker-yellow-background_1017-39369.avif"
+                          alt="Post-Grad Team coming soon"
+                          className="h-full w-full object-cover object-center"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                        <span className="absolute bottom-3 left-3 text-xs font-semibold uppercase tracking-wider text-yellow-300">
+                          {team.label}
+                        </span>
+                      </div>
+                    )}
                     <div className="p-4">
-                      <h3 className="text-sm font-semibold text-white">
+                      <h3 className="text-base font-semibold text-white">
                         {team.title}
                       </h3>
-                      <p className="mt-2 text-xs leading-relaxed text-white/75">
+                      <p className="mt-2 text-sm leading-7 text-white/80">
                         {team.desc}
                       </p>
+                      {team.points ? (
+                        <ul className="mt-3 space-y-1.5 text-xs leading-relaxed text-white/80">
+                          {team.points.map((point) => (
+                            <li key={point} className="flex items-start gap-2">
+                              <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-yellow-400" />
+                              <span>{point}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      ) : null}
                     </div>
                   </div>
                 ))}
