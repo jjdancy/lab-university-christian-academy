@@ -322,7 +322,88 @@ export default function AboutPage() {
             </div>
           </section>
 
-          {/* 7. Leadership & Character Development */}
+          {/* 7. Board & Leadership */}
+          <section className="border-b border-white/10 bg-black py-16 md:py-20">
+            <div className="mx-auto max-w-6xl px-4 md:px-6">
+              <p className="text-xs font-semibold uppercase tracking-[0.3em] text-yellow-400/90">
+                Board & Leadership
+              </p>
+              <h2 className="mt-3 text-2xl font-semibold tracking-tight text-white sm:text-3xl">
+                People invested in the mission.
+              </h2>
+              <p className="mt-3 max-w-2xl text-sm leading-relaxed text-white/75">
+                LAB U is supported by experienced leaders in education, ministry, and community development who are committed to student success.
+              </p>
+
+              <div className="mt-10 overflow-hidden rounded-2xl border border-white/10 bg-zinc-950/80">
+                <div className="flex flex-col gap-0 sm:flex-row">
+                  {/* Photo */}
+                  <div className="relative w-full shrink-0 sm:w-64 md:w-72">
+                    <img
+                      src="/images/Jacque%20White.png"
+                      alt="Jacque' L. White — Board Advisor, LAB University Christian Academy"
+                      className="h-full w-full object-cover object-top sm:absolute sm:inset-0"
+                      style={{ minHeight: "18rem" }}
+                    />
+                    <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/60 to-transparent sm:bg-gradient-to-r sm:from-transparent sm:to-black/20" />
+                  </div>
+
+                  {/* Content */}
+                  <div className="flex flex-1 flex-col justify-center gap-5 p-6 md:p-10">
+                    <div>
+                      <p className="text-xs font-semibold uppercase tracking-[0.25em] text-yellow-400/90">
+                        Board Advisor
+                      </p>
+                      <h3 className="mt-1 text-2xl font-semibold tracking-tight text-white">
+                        Jacque&apos; L. White
+                      </h3>
+                      <p className="mt-1 text-sm text-white/60">
+                        Co-Pastor & Co-Founder, Have Life Church · Educator · Community Leader
+                      </p>
+                    </div>
+
+                    <ul className="space-y-2 text-sm text-white/80">
+                      {[
+                        "Doctorate in Educational Leadership & Policy (in progress) · M.A. Educational Leadership, Trinity University · M.A. Teaching, Regent University · B.S. Health Science, Howard University",
+                        "Assistant Principal — Charlotte Mecklenburg Schools & Fort Worth Independent School District",
+                        "Co-Pastor & Co-Founder, Have Life Church and Ministries Inc. — Christian curriculum, youth & women's ministry, outreach and counseling",
+                        "Former teacher, Prince Georges' County Public Schools — curriculum development and student mentorship",
+                        "Volunteer: Charlotte Mecklenburg PTSA · Autism Charlotte",
+                      ].map((hl, i) => (
+                        <li key={i} className="flex items-start gap-2">
+                          <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-yellow-400" />
+                          {hl}
+                        </li>
+                      ))}
+                    </ul>
+
+                    <details className="group rounded-xl border border-white/10 bg-black/30">
+                      <summary className="cursor-pointer list-none px-4 py-3 text-sm font-semibold text-yellow-300 transition-colors hover:text-yellow-200 [&::-webkit-details-marker]:hidden">
+                        Read full profile
+                        <span className="ml-2 inline-block transition-transform group-open:rotate-180" aria-hidden>▾</span>
+                      </summary>
+                      <div className="space-y-4 border-t border-white/10 px-4 py-4 text-sm leading-relaxed text-white/85">
+                        <p>
+                          Jacque&apos; L. White is a dynamic leader, educator, and co-founder with extensive experience in ministry, school administration, and community service. She has a proven ability to develop educational programs, faith-based curricula, and support systems that inspire growth, healing, and empowerment.
+                        </p>
+                        <p>
+                          As Co-Pastor & Co-Founder of Have Life Church and Ministries Inc., she provides spiritual leadership, strategic planning, and congregational support — developing and implementing Christian curriculum and youth and women&apos;s ministry programs while fostering a culture of compassion through outreach and counseling.
+                        </p>
+                        <p>
+                          Her career in public education includes roles as Assistant Principal at Charlotte Mecklenburg Schools and Fort Worth Independent School District, where she oversaw school operations, staff management, and student development and led initiatives to improve academic achievement and community engagement.
+                        </p>
+                        <p>
+                          As a Board Advisor for LAB University Christian Academy, she brings deep expertise in educational leadership, curriculum development, ministry leadership, community engagement, mentorship, and strategic planning. She lives by the conviction that &ldquo;a hug heals&rdquo; — a belief that shapes her approach to every student and every community she serves.
+                        </p>
+                      </div>
+                    </details>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* 8. Leadership & Character Development */}
           <section className="border-b border-white/10 bg-black py-16 md:py-20">
             <div className="mx-auto max-w-6xl px-4 md:px-6">
               <div className="grid gap-10 md:grid-cols-[1fr,1.1fr] md:items-center md:gap-14">
@@ -369,7 +450,7 @@ export default function AboutPage() {
             </div>
           </section>
 
-          {/* 8. Admissions CTA */}
+          {/* 9. Admissions CTA */}
           <AdmissionsCTASection />
         </MountStaggerReveal>
       </main>
