@@ -182,6 +182,13 @@ export async function getCoaches(): Promise<ResolvedCoach[]> {
     .filter(Boolean) as ResolvedCoach[];
 
   // If documents exist but none resolve (e.g. missing required fields), hide the coaches list.
-  return resolved.length ? resolved : [];
+  if (!resolved.length) return [];
+
+  // Merge any hardcoded coaches that are not yet in Sanity (matched by fallback id).
+  const hardcodedOnlyInFallback = [FALLBACK_CORNELIUSSEN].filter(
+    (fb) => !resolved.some((r) => r.name.toLowerCase() === fb.name.toLowerCase())
+  );
+
+  return [...resolved, ...hardcodedOnlyInFallback];
 }
 
