@@ -36,7 +36,29 @@ const FALLBACK_COACH: ResolvedCoach = {
   ],
 };
 
-const FALLBACK_COACHES: ResolvedCoach[] = [FALLBACK_COACH];
+const FALLBACK_CORNELIUSSEN: ResolvedCoach = {
+  id: "fallback-shane-corneliussen",
+  name: "Shane Corneliussen",
+  role: "Head Men's Basketball Coach — Regional Team",
+  photoUrl: "/images/coach%20Corneliussen.png",
+  photoAlt: "Shane Corneliussen — Regional Head Coach",
+  highlights: [
+    "Former professional basketball player in Scotland's top league — helped Boroughmuir Blaze win the historic 2022-23 League, Cup & Playoff treble",
+    "Head Assistant Coach (Men's & Women's Programs) — Pacific Union College: recruiting, player development plans, strength & conditioning, film analysis",
+    "Coaching experience at St. Stephens High School and Charlotte Dragons Basketball Organization",
+    "Emphasizes skill development, character building, accountability, and positive team culture",
+    "Committed to servant leadership — helping student-athletes maximize potential through faith, discipline, and excellence",
+  ],
+  fullBioParagraphs: [
+    "Shane Corneliussen enters his role as Head Men's Basketball Coach for the Regional Team at LAB University Christian Academy with a diverse background in coaching, player development, recruiting, and professional playing experience.",
+    "A former professional basketball player in Scotland's top league, Corneliussen helped the Boroughmuir Blaze to a historic treble, capturing League, Cup, and Playoff Championships during the 2022-23 season. His experience competing at the professional level provides him with firsthand knowledge of the commitment, discipline, and leadership required to succeed on and off the court.",
+    "Prior to joining LAB University Christian Academy, Corneliussen served as Head Assistant Coach for both the men's and women's basketball programs at Pacific Union College. In those roles, he coordinated recruiting efforts, developed individualized player development plans, designed strength and conditioning programs, managed film analysis, and assisted with game strategy and scouting. His recruiting efforts and player development focus played a key role in enhancing program competitiveness and student-athlete growth.",
+    "Corneliussen has also coached at the youth and high school levels, including positions with St. Stephens High School and the Charlotte Dragons Basketball Organization. Throughout his coaching career, he has emphasized skill development, character building, accountability, and creating a positive team culture that prepares athletes for success both in basketball and in life.",
+    "Known for his passion for player development, relationship-building, and servant leadership, Corneliussen is committed to helping student-athletes maximize their potential while building a championship culture rooted in faith, discipline, and excellence.",
+  ],
+};
+
+const FALLBACK_COACHES: ResolvedCoach[] = [FALLBACK_COACH, FALLBACK_CORNELIUSSEN];
 
 function isStringArray(v: unknown): v is string[] {
   return Array.isArray(v) && v.every((x) => typeof x === "string");
