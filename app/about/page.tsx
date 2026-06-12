@@ -326,14 +326,11 @@ export default function AboutPage() {
           <section className="border-b border-white/10 bg-black py-16 md:py-20">
             <div className="mx-auto max-w-6xl px-4 md:px-6">
               <p className="text-xs font-semibold uppercase tracking-[0.3em] text-yellow-400/90">
-                Board & Leadership
+                Leadership
               </p>
               <h2 className="mt-3 text-2xl font-semibold tracking-tight text-white sm:text-3xl">
-                People invested in the mission.
+                Meet Our Head of School
               </h2>
-              <p className="mt-3 max-w-2xl text-sm leading-relaxed text-white/75">
-                LAB U is supported by experienced leaders in education, ministry, and community development who are committed to student success.
-              </p>
 
               <div className="mt-10 overflow-hidden rounded-2xl border border-white/10 bg-zinc-950/80">
                 <div className="flex flex-col gap-0 sm:flex-row">
@@ -352,7 +349,7 @@ export default function AboutPage() {
                   <div className="flex flex-1 flex-col justify-center gap-5 p-6 md:p-10">
                     <div>
                       <p className="text-xs font-semibold uppercase tracking-[0.25em] text-yellow-400/90">
-                        Board Advisor
+                        Head of School
                       </p>
                       <h3 className="mt-1 text-2xl font-semibold tracking-tight text-white">
                         Jacque&apos; L. White
