@@ -20,7 +20,7 @@ const FALLBACK_COACH: ResolvedCoach = {
   role: "National Head Coach",
   coachUpBadgeText:
     "CoachUp's #1 Basketball Trainer in NC · #8 in the US",
-  photoUrl: "/images/coach%20speech.jpg",
+  photoUrl: "/images/coach%20speech%20headshot.png",
   photoAlt: "Andre Speech — National Head Coach",
   highlights: [
     "35+ years in the game · 4-year varsity at C.K. McClatchy (Sacramento) · school all-time leading scorer, rebounder & shot blocker",
