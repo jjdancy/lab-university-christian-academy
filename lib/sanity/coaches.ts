@@ -184,11 +184,24 @@ export async function getCoaches(): Promise<ResolvedCoach[]> {
   // If documents exist but none resolve (e.g. missing required fields), hide the coaches list.
   if (!resolved.length) return [];
 
+  // Local photo overrides — use these until Sanity photos are updated.
+  const LOCAL_PHOTO_OVERRIDES: Record<string, { photoUrl: string; photoAlt: string }> = {
+    "andre speech": {
+      photoUrl: "/images/coach%20speech%20headshot.png",
+      photoAlt: "Andre Speech — National Head Coach",
+    },
+  };
+
+  const withOverrides = resolved.map((coach) => {
+    const override = LOCAL_PHOTO_OVERRIDES[coach.name.toLowerCase()];
+    return override ? { ...coach, ...override } : coach;
+  });
+
   // Merge any hardcoded coaches that are not yet in Sanity (matched by fallback id).
   const hardcodedOnlyInFallback = [FALLBACK_CORNELIUSSEN].filter(
-    (fb) => !resolved.some((r) => r.name.toLowerCase() === fb.name.toLowerCase())
+    (fb) => !withOverrides.some((r) => r.name.toLowerCase() === fb.name.toLowerCase())
   );
 
-  return [...resolved, ...hardcodedOnlyInFallback];
+  return [...withOverrides, ...hardcodedOnlyInFallback];
 }
 
