@@ -43,7 +43,7 @@ const FALLBACK_CORNELIUSSEN: ResolvedCoach = {
   role: "Head Men's Basketball Coach — Regional Team",
   photoUrl: "/images/coach%20Corneliussen.png",
   photoAlt: "Shane Corneliussen — Regional Head Coach",
-  photoObjectPosition: "center 15%",
+  photoObjectPosition: "center 25%",
   highlights: [
     "Former professional basketball player in Scotland's top league — helped Boroughmuir Blaze win the historic 2022-23 League, Cup & Playoff treble",
     "Head Assistant Coach (Men's & Women's Programs) — Pacific Union College: recruiting, player development plans, strength & conditioning, film analysis",
