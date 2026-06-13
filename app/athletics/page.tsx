@@ -547,7 +547,8 @@ export default async function AthleticsPage() {
                           <img
                             src={coach.photoUrl}
                             alt={coach.photoAlt}
-                            className="h-full w-full object-cover object-top scale-110"
+                            className="h-full w-full object-cover scale-110"
+                            style={{ objectPosition: coach.photoObjectPosition ?? "top" }}
                           />
                         </div>
                       </div>
