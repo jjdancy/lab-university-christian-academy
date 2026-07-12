@@ -60,7 +60,30 @@ const FALLBACK_CORNELIUSSEN: ResolvedCoach = {
   ],
 };
 
-const FALLBACK_COACHES: ResolvedCoach[] = [FALLBACK_COACH, FALLBACK_CORNELIUSSEN];
+const FALLBACK_HENDERSON: ResolvedCoach = {
+  id: "fallback-davion-henderson",
+  name: "Davion Henderson Jr",
+  role: "Varsity Assistant Coach",
+  photoUrl: "/images/coach%20henderson.png",
+  photoAlt: "Davion Henderson Jr — Varsity Assistant Coach",
+  photoObjectPosition: "center 20%",
+  highlights: [
+    "8 years as Assistant / Head Women's Coach at Queen City Baller Basketball · 2 years Upward Stars · 1 year C3 Concord Christian School",
+    "Coached female athletes ages 6–19 — led teams to 40+ first-place tournament finishes",
+    "Developed Division I and Power Five-level athletes, helping secure $30,000+ in athletic scholarships",
+    "National recruiting exposure: game film production, direct college coach communication, travel across East Coast, Midwest & West Coast",
+    "Led $50,000+ in fundraising, sponsorships, and community partnerships · organized community service initiatives",
+  ],
+  fullBioParagraphs: [
+    "Davion Henderson Jr — known as Coach Jr — brings over a decade of grassroots coaching experience to LAB University Christian Academy as Varsity Assistant Coach.",
+    "Coach Jr spent 8 years as Assistant and Head Women's Basketball Coach with Queen City Baller Basketball, followed by roles at Upward Stars Basketball and C3 Concord Christian School. Throughout his career he coached and developed female athletes ages 6–19, emphasizing fundamentals, basketball IQ, leadership, and emotional growth.",
+    "His teams accumulated 40+ first-place tournament finishes while maintaining a focus on long-term athlete development over short-term results. He has developed Division I and Power Five-level athletes, helping them secure over $30,000 in athletic scholarships through direct exposure, game film production, and consistent communication with college coaches.",
+    "Coach Jr's program competed across the East Coast, Midwest, and West Coast, providing national-level experience and recruiting visibility to student-athletes. He implemented behavior management and accountability systems to maintain focus, discipline, and team standards, while also emphasizing academic accountability — supporting high GPAs, graduation readiness, and postsecondary success.",
+    "Beyond the court, he integrated mentorship, mental health awareness, and goal-setting into daily coaching practices, and led collaborative efforts resulting in $50,000+ in fundraising, sponsorships, and community partnerships. He is committed to developing the whole athlete — on and off the court.",
+  ],
+};
+
+const FALLBACK_COACHES: ResolvedCoach[] = [FALLBACK_COACH, FALLBACK_CORNELIUSSEN, FALLBACK_HENDERSON];
 
 function isStringArray(v: unknown): v is string[] {
   return Array.isArray(v) && v.every((x) => typeof x === "string");
@@ -200,7 +223,7 @@ export async function getCoaches(): Promise<ResolvedCoach[]> {
   });
 
   // Merge any hardcoded coaches that are not yet in Sanity (matched by fallback id).
-  const hardcodedOnlyInFallback = [FALLBACK_CORNELIUSSEN].filter(
+  const hardcodedOnlyInFallback = [FALLBACK_CORNELIUSSEN, FALLBACK_HENDERSON].filter(
     (fb) => !withOverrides.some((r) => r.name.toLowerCase() === fb.name.toLowerCase())
   );
 
