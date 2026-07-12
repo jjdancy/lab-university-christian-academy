@@ -63,7 +63,7 @@ const FALLBACK_CORNELIUSSEN: ResolvedCoach = {
 const FALLBACK_HENDERSON: ResolvedCoach = {
   id: "fallback-davion-henderson",
   name: "Davion Henderson Jr",
-  role: "Varsity Assistant Coach",
+  role: "Girls Varsity Assistant Coach",
   photoUrl: "/images/coach%20henderson.png",
   photoAlt: "Davion Henderson Jr — Varsity Assistant Coach",
   photoObjectPosition: "center 20%",
