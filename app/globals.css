@@ -50,3 +50,13 @@ body {
   display: none;
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .page-animation,
+  .scroll-reveal {
+    animation: none !important;
+    transition: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+

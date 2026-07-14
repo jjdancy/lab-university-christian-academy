@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import PageAnimation from "@/components/PageAnimation";
+import HiringPromoModal from "@/components/HiringPromoModal";
 import {ScheduleTourModalProvider} from "@/components/ScheduleTourModalProvider";
 
 export const metadata: Metadata = {
@@ -19,6 +20,7 @@ export default function RootLayout({
       <body className="bg-black text-white antialiased">
         <ScheduleTourModalProvider>
           <PageAnimation>{children}</PageAnimation>
+          <HiringPromoModal />
         </ScheduleTourModalProvider>
       </body>
     </html>
