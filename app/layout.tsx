@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import {Analytics} from "@vercel/analytics/next";
 import "./globals.css";
 import PageAnimation from "@/components/PageAnimation";
 import HiringPromoModal from "@/components/HiringPromoModal";
@@ -22,6 +23,7 @@ export default function RootLayout({
           <PageAnimation>{children}</PageAnimation>
           <HiringPromoModal />
         </ScheduleTourModalProvider>
+        <Analytics />
       </body>
     </html>
   );
