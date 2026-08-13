@@ -163,18 +163,9 @@ export default async function AcademicsPage() {
           {/* 4. Acellus in depth — with Acellus image */}
           <section id="acellus" className="border-b border-white/10 bg-zinc-950 py-16 md:py-20">
             <div className="mx-auto max-w-6xl px-4 md:px-6">
-              <div className="grid gap-10 md:grid-cols-[1fr,1.1fr] md:items-center md:gap-14">
-                <div className="flex flex-col items-center justify-center rounded-2xl border border-yellow-500/30 bg-black/60 p-8">
-                  <img
-                    src="/images/Acellus-Academy-High-School-S-1-300x294.png"
-                    alt="Acellus Learning System"
-                    className="w-48 object-contain md:w-56"
-                  />
-                  <p className="mt-4 text-center text-xs font-semibold uppercase tracking-wider text-yellow-200/90">
-                    Acellus Learning System
-                  </p>
-                </div>
+              <div className="grid gap-10 md:gap-14">
                 <div className="space-y-4">
+
                   <p className="text-xs font-semibold uppercase tracking-[0.3em] text-yellow-400/90">
                     Learning Platform
                   </p>
