@@ -1,8 +1,23 @@
+import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
 import AdmissionsCTASection from "@/components/AdmissionsCTASection";
 import Footer from "@/components/Footer";
 import MountStaggerReveal from "@/components/MountStaggerReveal";
 import {PLAYBOOK_REGISTER_URL, SCHEDULE_TOUR_URL} from "@/lib/constants";
+
+export const metadata: Metadata = {
+  title: "Admissions",
+  description:
+    "Enrollment for the 2026–27 school year is open. K–12, Christ-centered education with optional elite basketball in Charlotte, NC. Begin your LAB U journey.",
+  alternates: { canonical: "/admissions" },
+  openGraph: {
+    title: "Admissions | LAB University Christian Academy",
+    description:
+      "Enrollment for the 2026–27 school year is open. K–12, Christ-centered education with optional elite basketball in Charlotte, NC.",
+    url: "/admissions",
+    images: [{ url: "/images/allhandsin.jpeg", width: 1200, height: 630, alt: "LAB U community" }]
+  }
+};
 
 export default function AdmissionsPage() {
   return (

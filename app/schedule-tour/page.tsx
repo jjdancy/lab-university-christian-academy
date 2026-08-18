@@ -1,7 +1,21 @@
+import type { Metadata } from "next";
 import Footer from "@/components/Footer";
 import MountStaggerReveal from "@/components/MountStaggerReveal";
 import Navbar from "@/components/Navbar";
 import ScheduleTourForm from "@/components/ScheduleTourForm";
+
+export const metadata: Metadata = {
+  title: "Schedule a Tour",
+  description:
+    "Schedule a campus tour at LAB University Christian Academy, 8016 Tower Point Dr, Charlotte, NC. See our Christ-centered academics and elite student-athlete development in person.",
+  alternates: { canonical: "/schedule-tour" },
+  openGraph: {
+    title: "Schedule a Campus Tour | LAB University Christian Academy",
+    description:
+      "See LAB University Christian Academy in person and learn more about our Christ-centered academics, structured environment, and elite student-athlete development.",
+    url: "/schedule-tour"
+  }
+};
 
 export default function ScheduleTourPage() {
   return (

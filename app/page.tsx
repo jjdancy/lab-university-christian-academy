@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import HomePromoVideo from "@/components/HomePromoVideo";
@@ -14,6 +15,10 @@ import {PLAYBOOK_REGISTER_URL} from "@/lib/constants";
 
 /** Re-fetch homepage from Sanity so carousel updates without a full redeploy */
 export const revalidate = 60;
+
+export const metadata: Metadata = {
+  alternates: { canonical: "/" }
+};
 
 export default async function Home() {
   const carouselFallbackTitle = "Where Preparation Meets Opportunity";

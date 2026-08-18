@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import MountStaggerReveal from "@/components/MountStaggerReveal";
@@ -9,6 +10,20 @@ import {urlFor} from "@/lib/sanity/image";
 import {getCoaches} from "@/lib/sanity/coaches";
 
 export const revalidate = 60;
+
+export const metadata: Metadata = {
+  title: "Athletics",
+  description:
+    "LAB U Basketball delivers elite development modeled after D-1 programs—intense practices, film, performance training, and National Championship-level results in Charlotte, NC.",
+  alternates: { canonical: "/athletics" },
+  openGraph: {
+    title: "Athletics | LAB University Christian Academy",
+    description:
+      "Elite basketball development modeled after D-1 programs. Big Shots National Championship-winning culture at LAB U in Charlotte, NC.",
+    url: "/athletics",
+    images: [{ url: "/images/championship.png", width: 1200, height: 630, alt: "LAB U Basketball" }]
+  }
+};
 
 export default async function AthleticsPage() {
   const carouselFallbackTitle = "Where Preparation Meets Opportunity";

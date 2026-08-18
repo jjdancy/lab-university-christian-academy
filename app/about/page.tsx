@@ -1,7 +1,22 @@
+import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import MountStaggerReveal from "@/components/MountStaggerReveal";
 import AdmissionsCTASection from "@/components/AdmissionsCTASection";
+
+export const metadata: Metadata = {
+  title: "About LAB U",
+  description:
+    "LAB University Christian Academy is a K–12 private academy in Charlotte, NC uniting faith, college-prep academics, and elite basketball development at LABCITY Sports Training & Event Center.",
+  alternates: { canonical: "/about" },
+  openGraph: {
+    title: "About LAB University Christian Academy",
+    description:
+      "Christ-centered, purpose-driven, excellence-focused. Learn about LAB U's mission, leadership, and partnerships in Charlotte, NC.",
+    url: "/about",
+    images: [{ url: "/images/all%20teams.jpeg", width: 1200, height: 630, alt: "LAB U all teams" }]
+  }
+};
 
 export default function AboutPage() {
   return (

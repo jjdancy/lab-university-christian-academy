@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import MountStaggerReveal from "@/components/MountStaggerReveal";
@@ -5,6 +6,20 @@ import AdmissionsCTASection from "@/components/AdmissionsCTASection";
 import {getAcademicsElectivesSection} from "@/lib/sanity/academicsElectives";
 
 export const revalidate = 60;
+
+export const metadata: Metadata = {
+  title: "Academics",
+  description:
+    "A modern, college-prep academic model for scholars and athletes. LAB U combines the Acellus Learning System with in-person instruction in Charlotte, NC.",
+  alternates: { canonical: "/academics" },
+  openGraph: {
+    title: "Academics at LAB University Christian Academy",
+    description:
+      "Structured, college-preparatory academics that fit the rhythm of serious students and athletes—Acellus Learning System plus in-person oversight.",
+    url: "/academics",
+    images: [{ url: "/images/little%20kids%20on%20field%20trip.jpeg", width: 1200, height: 630, alt: "LAB U students on a field trip" }]
+  }
+};
 
 export default async function AcademicsPage() {
   const electives = await getAcademicsElectivesSection();

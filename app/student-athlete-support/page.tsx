@@ -1,7 +1,21 @@
+import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import MountStaggerReveal from "@/components/MountStaggerReveal";
 import { SCHEDULE_TOUR_URL } from "@/lib/constants";
+
+export const metadata: Metadata = {
+  title: "Student-Athlete Support",
+  description:
+    "LAB U develops the whole student-athlete—mental health and wellness, recovery and physical care, college recruitment guidance, and academic accountability for NCAA readiness.",
+  alternates: { canonical: "/student-athlete-support" },
+  openGraph: {
+    title: "Student-Athlete Support | LAB University Christian Academy",
+    description:
+      "Support that goes beyond the court—mentally, physically, academically, and spiritually developing every student-athlete at LAB U.",
+    url: "/student-athlete-support"
+  }
+};
 
 export default function StudentAthleteSupportPage() {
   return (

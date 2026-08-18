@@ -1,7 +1,22 @@
+import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import MountStaggerReveal from "@/components/MountStaggerReveal";
 import AdmissionsCTASection from "@/components/AdmissionsCTASection";
+
+export const metadata: Metadata = {
+  title: "Facilities",
+  description:
+    "Elite facilities built for student-athlete development at LABCITY Sports Training & Event Center—arena-style court, Dr. Dish shooting lab, performance center, and academic spaces.",
+  alternates: { canonical: "/facilities" },
+  openGraph: {
+    title: "Facilities | LAB University Christian Academy",
+    description:
+      "In partnership with LABCITY Sports Training & Event Center, LAB U provides a professional training environment designed to prepare students for the next level.",
+    url: "/facilities",
+    images: [{ url: "/images/gym%20facity.png", width: 1200, height: 630, alt: "LAB U training facility at LABCITY" }]
+  }
+};
 
 export default function FacilitiesPage() {
   return (

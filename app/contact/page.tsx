@@ -1,6 +1,20 @@
+import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import MountStaggerReveal from "@/components/MountStaggerReveal";
+
+export const metadata: Metadata = {
+  title: "Contact",
+  description:
+    "Contact LAB University Christian Academy at 8016 Tower Point Dr, Charlotte, NC 28227 or (704) 315-1035 for admissions, academics, or athletics questions.",
+  alternates: { canonical: "/contact" },
+  openGraph: {
+    title: "Contact LAB University Christian Academy",
+    description:
+      "Get in touch with LAB U in Charlotte, NC for admissions, academics, or athletics questions.",
+    url: "/contact"
+  }
+};
 
 export default function ContactPage() {
   return (
