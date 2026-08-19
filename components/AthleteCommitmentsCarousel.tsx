@@ -35,9 +35,39 @@ type AthleteCommitmentsCarouselProps = {
   athletes?: AthleteCommitment[];
 };
 
+/** Fallback card metrics, used only until the rendered cards can be measured. */
 const CARD_WIDTH = 280;
 const CARD_WIDTH_SM = 320;
 const GAP = 24;
+
+/** Drift speed in pixels per second — ambient, not attention-grabbing. */
+const SPEED = 46;
+const SPEED_MOBILE = 34;
+/** `prefers-reduced-motion` slows the drift rather than stopping it. */
+const SPEED_REDUCED = 12;
+
+/** How long the drift stays out of the way after a touch, drag or wheel. */
+const INTERACTION_PAUSE_MS = 2500;
+
+/** Longest frame gap still credited in full, so stalls do not fast-forward. */
+const MAX_FRAME_SECONDS = 0.25;
+
+/**
+ * Width of one full set of athletes, trailing gap included.
+ *
+ * Measured off the rendered cards rather than the constants above so the wrap
+ * point stays exact across the `sm` breakpoint and any later style change; the
+ * constants are only a pre-layout fallback.
+ */
+function measureSetWidth(el: HTMLElement, count: number) {
+  const cards = el.querySelectorAll<HTMLElement>("[data-carousel-card]");
+  if (cards.length > count) {
+    const width = cards[count].offsetLeft - cards[0].offsetLeft;
+    if (width > 0) return width;
+  }
+  const cardW = window.innerWidth >= 640 ? CARD_WIDTH_SM : CARD_WIDTH;
+  return count * (cardW + GAP);
+}
 
 export default function AthleteCommitmentsCarousel({
   title = "Where Preparation Meets Opportunity",
@@ -45,7 +75,6 @@ export default function AthleteCommitmentsCarousel({
   athletes = DEFAULT_ATHLETES,
 }: AthleteCommitmentsCarouselProps) {
   const scrollRef = useRef<HTMLDivElement>(null);
-  const setWidthRef = useRef(0);
 
   // Triple the list for seamless infinite scroll
   const infiniteList = [...athletes, ...athletes, ...athletes];
@@ -55,94 +84,128 @@ export default function AthleteCommitmentsCarousel({
     .map((a) => `${a.id ?? a.name}|${a.image}`)
     .join(";;");
 
-  useEffect(() => {
-    const el = scrollRef.current;
-    if (!el || athletes.length === 0) return;
-    const cardW = typeof window !== "undefined" && window.innerWidth >= 640 ? CARD_WIDTH_SM : CARD_WIDTH;
-    const setWidth = athletes.length * (cardW + GAP);
-    setWidthRef.current = setWidth;
-    const setInitial = () => {
-      if (!el) return;
-      el.scrollLeft = setWidth;
-    };
-    setInitial();
-    const t = setTimeout(setInitial, 100);
-    return () => clearTimeout(t);
-  }, [athletes.length, athletesSignature]);
-
-  // Auto side-scroll: continuous rAF updates for smooth movement.
-  // We also wrap at the “middle set” boundary to keep the carousel seamless.
+  // Continuous auto-scroll, driven by rAF and wrapped at the middle set so the
+  // strip never reaches either end.
+  //
+  // The position is tracked as a float and written to `scrollLeft` each frame
+  // rather than incrementing `scrollLeft` in place: a frame's step is a
+  // fraction of a pixel, and browsers that snap scroll offsets to whole device
+  // pixels swallow those increments outright, leaving the strip standing still.
   useEffect(() => {
     const el = scrollRef.current;
     if (!el || athletes.length === 0) return;
 
     const prefersReducedMotion =
-      typeof window !== "undefined" &&
-      window.matchMedia &&
+      typeof window.matchMedia === "function" &&
       window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    // Even if the OS requests reduced motion, we still scroll (just slower),
-    // since this carousel is meant to be continuously visible on the homepage.
 
-    const pauseUntilRef = {current: 0} as {current: number};
-    const pause = () => {
-      pauseUntilRef.current = Date.now() + 2000;
+    let setWidth = measureSetWidth(el, athletes.length);
+    // Park on the middle copy so there is a whole set of runway either way.
+    let offset = setWidth;
+    el.scrollLeft = offset;
+
+    // Cards can settle a frame or two after mount, which moves the wrap point
+    // and can reset scrollLeft; re-measure once layout has landed.
+    const settleId = window.setTimeout(() => {
+      setWidth = measureSetWidth(el, athletes.length);
+      offset = setWidth;
+      el.scrollLeft = offset;
+    }, 100);
+
+    // Hover pause lets a visitor stop on a card and read the name overlay, but
+    // only on devices that really hover: on a touch screen `:hover` can stick
+    // after a tap and would strand the strip. Touch is covered by `hold`.
+    const canHover =
+      typeof window.matchMedia === "function" &&
+      window.matchMedia("(hover: hover)").matches;
+
+    let onScreen = true;
+    let resumeAt = 0;
+
+    const hold = () => {
+      resumeAt = performance.now() + INTERACTION_PAUSE_MS;
     };
 
-    // Pause auto-scroll briefly while the user interacts.
-    el.addEventListener("pointerdown", pause, {passive: true});
-    el.addEventListener("touchstart", pause, {passive: true});
+    // Only a sideways wheel or trackpad gesture moves this strip; a vertical
+    // one is the visitor scrolling the page past it, which should pause nothing.
+    const onWheel = (e: WheelEvent) => {
+      if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) hold();
+    };
+
+    el.addEventListener("pointerdown", hold, {passive: true});
+    el.addEventListener("touchstart", hold, {passive: true});
+    el.addEventListener("wheel", onWheel, {passive: true});
+
+    const observer =
+      typeof IntersectionObserver === "function"
+        ? new IntersectionObserver(
+            ([entry]) => {
+              onScreen = entry.isIntersecting;
+            },
+            {threshold: 0},
+          )
+        : null;
+    observer?.observe(el);
+
+    const onResize = () => {
+      const next = measureSetWidth(el, athletes.length);
+      if (next <= 0 || next === setWidth) return;
+      // Carry progress through the breakpoint instead of snapping to the start.
+      const progress = (offset - setWidth) / setWidth;
+      setWidth = next;
+      offset = setWidth + progress * setWidth;
+      el.scrollLeft = offset;
+    };
+    window.addEventListener("resize", onResize);
 
     let rafId = 0;
-    let lastTs = performance.now();
+    let last = performance.now();
 
-    const tick = (ts: number) => {
-      const now = Date.now();
-      const dt = (ts - lastTs) / 1000;
-      lastTs = ts;
+    const tick = (now: number) => {
+      rafId = requestAnimationFrame(tick);
 
-      if (now < pauseUntilRef.current) {
-        rafId = requestAnimationFrame(tick);
+      // Clamp the step so returning to a backgrounded tab does not fast-forward
+      // the strip by however long it sat idle. The ceiling is generous on
+      // purpose: a stalled frame on a slow phone should still contribute its
+      // full time, and even a maxed-out step moves the strip by ~11px.
+      const dt = Math.min((now - last) / 1000, MAX_FRAME_SECONDS);
+      last = now;
+
+      // Hover is read from the element each frame rather than tracked through
+      // mouseenter/mouseleave: those fire spuriously on a scrolling strip, and
+      // a stray leave silently cancelled the pause while the cursor sat still.
+      const hovered = canHover && el.matches(":hover");
+
+      if (hovered || !onScreen || now < resumeAt) {
+        // Track manual scrolling so the drift picks up where the visitor left off.
+        offset = el.scrollLeft;
         return;
       }
 
-      const isMobile =
-        typeof window !== "undefined" && window.innerWidth <= 640;
+      const speed = prefersReducedMotion
+        ? SPEED_REDUCED
+        : window.innerWidth <= 640
+          ? SPEED_MOBILE
+          : SPEED;
 
-      // Much slower than before; continuous movement feels smoother.
-      const speedPxPerSec = prefersReducedMotion
-        ? isMobile
-          ? 1.4
-          : 2.0
-        : isMobile
-          ? 2.0
-          : 3.0;
+      offset += speed * dt;
 
-      // Prefer cached width, but fall back if it hasn't been set yet.
-      const cardW =
-        typeof window !== "undefined" && window.innerWidth >= 640
-          ? CARD_WIDTH_SM
-          : CARD_WIDTH;
-      const setWidth =
-        setWidthRef.current || athletes.length * (cardW + GAP);
+      if (offset >= setWidth * 2) offset -= setWidth;
+      else if (offset < setWidth) offset += setWidth;
 
-      el.scrollLeft += speedPxPerSec * dt;
-
-      // Keep scroll position centered to avoid hitting the edges.
-      if (el.scrollLeft >= setWidth * 2) {
-        el.scrollLeft -= setWidth;
-      } else if (el.scrollLeft < setWidth) {
-        el.scrollLeft += setWidth;
-      }
-
-      rafId = requestAnimationFrame(tick);
+      el.scrollLeft = offset;
     };
 
     rafId = requestAnimationFrame(tick);
 
     return () => {
       cancelAnimationFrame(rafId);
-      el.removeEventListener("pointerdown", pause);
-      el.removeEventListener("touchstart", pause);
+      window.clearTimeout(settleId);
+      window.removeEventListener("resize", onResize);
+      observer?.disconnect();
+      el.removeEventListener("pointerdown", hold);
+      el.removeEventListener("touchstart", hold);
+      el.removeEventListener("wheel", onWheel);
     };
   }, [athletes.length, athletesSignature]);
 
@@ -162,7 +225,7 @@ export default function AthleteCommitmentsCarousel({
         )}
 
         <div className="relative mt-10">
-          {/* Auto-scroll only; no arrows, no user scroll */}
+          {/* Auto-scrolling strip; no arrows — hover, drag or swipe pauses it */}
           <div
             ref={scrollRef}
             className="scrollbar-hide flex gap-6 overflow-x-auto overflow-y-hidden pb-2 px-1 md:gap-6 touch-pan-x select-none"
