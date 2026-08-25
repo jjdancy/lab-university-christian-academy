@@ -38,6 +38,31 @@ The giveaway that a response came from Namecheap's redirect service rather than
 Vercel is that it carries both a `location:` and a `refresh:` header and no
 `x-vercel-id`.
 
+## Timeline and evidence
+
+The Namecheap SOA serial is a Unix timestamp that bumps on every zone edit. It
+read `1787336339`, which is **2026-08-21 18:18:59 UTC** — so the zone was last
+edited on Aug 21, and that is when to look for the change that broke this.
+
+```
+curl -sS -H 'accept: application/dns-json' \
+  'https://dns.google/resolve?name=labuniversityprep.com&type=SOA'
+```
+
+Vercel Web Analytics corroborates the date, though it needs reading carefully.
+Traffic did not fall to zero — it changed shape. Pageviews ran ~29/day through
+Aug 20 and ~11/day from Aug 22, and pageviews-per-visitor fell from ~2.2 to
+~1.3: people arriving and leaving on the first page instead of browsing.
+
+Two traps when reading that data:
+
+- **Overnight zeros are not an outage.** The audience is in Charlotte, so a run
+  of empty hours between roughly 02:00 and 13:00 UTC is just night.
+- **A residual trickle does not mean the domain is healthy.** Some requests
+  still reached the app while the domain was misconfigured. Inconsistent
+  resolver state and cached DNS both produce this. Judge the domain from the
+  records, not from a non-zero visitor count.
+
 ## Diagnosing "the site is down"
 
 Work from the bottom of the stack up. The first two steps are what separate an
@@ -86,7 +111,8 @@ curl -sS -I https://labuniversityprep.com/
 
 - **`"live": false` in the Vercel API.** Every project in this account reports
   `live: false`, including ones that serve traffic normally. It is not a paused
-  flag. A genuinely paused project returns `503 DEPLOYMENT_PAUSED`.
+  flag, and unpausing is not the fix. A genuinely paused project returns
+  `503 DEPLOYMENT_PAUSED`, so a `403` rules a pause out on its own.
 - **The project alias redirecting to `vercel.com/sso-api`.** Deployment
   protection is set to `all_except_custom_domains`, so the
   `*-jjs-projects-*.vercel.app` alias requires login while the custom domain
