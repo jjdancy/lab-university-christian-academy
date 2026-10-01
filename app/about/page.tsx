@@ -7,7 +7,7 @@ import AdmissionsCTASection from "@/components/AdmissionsCTASection";
 export const metadata: Metadata = {
   title: "About LAB U",
   description:
-    "LAB University Christian Academy is a K–12 private academy in Charlotte, NC uniting faith, college-prep academics, and elite basketball development at LABCITY Sports Training & Event Center.",
+    "LAB University Christian Academy is a K–12 private academy in Charlotte, NC uniting faith, college-prep academics, and elite basketball development.",
   alternates: { canonical: "/about" },
   openGraph: {
     title: "About LAB University Christian Academy",
@@ -43,8 +43,7 @@ export default function AboutPage() {
               </h1>
               <p className="mt-4 max-w-2xl text-sm leading-relaxed text-white/80 md:text-base">
                 LAB University Christian Academy is a K–12 private academy in
-                Charlotte, NC that operates out of LABCITY Sports Training &
-                Event Center. We unite faith, academics, and elite basketball
+                Charlotte, NC. We unite faith, academics, and elite basketball
                 development in a disciplined, college-preparatory environment—
                 so every student is prepared for the next level, on and off the
                 court.
@@ -147,7 +146,7 @@ export default function AboutPage() {
                     text: "Flexible, accredited coursework with daily instructor support and accountability."
                   },
                   {
-                    title: "LABCITY Partnership",
+                    title: "State-of-the-Art Facility",
                     text: "Training at a state-of-the-art facility: arena-style court, Dr. Dish, performance center."
                   },
                   {
@@ -288,28 +287,6 @@ export default function AboutPage() {
               </p>
 
               <div className="mt-8 grid gap-5 md:grid-cols-2">
-                <article className="overflow-hidden rounded-2xl border border-white/10 bg-black/55">
-                  <div className="relative aspect-[16/9] border-b border-white/10">
-                    <img
-                      src="/images/labcity%20logo.webp"
-                      alt="LABCITY Sports Training & Event Center"
-                      className="h-full w-full bg-black object-contain object-center p-5"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                  </div>
-                  <div className="p-5 md:p-6">
-                    <h3 className="text-lg font-semibold text-yellow-300">
-                      LABCITY Sports Training & Event Center
-                    </h3>
-                    <p className="mt-3 text-sm leading-relaxed text-white/80">
-                      LAB U operates out of LABCITY, providing students with a
-                      professional environment that includes arena-level courts,
-                      performance training resources, and daily structure that
-                      mirrors collegiate expectations.
-                    </p>
-                  </div>
-                </article>
-
                 <article className="overflow-hidden rounded-2xl border border-yellow-500/25 bg-black/55">
                   <div className="relative aspect-[16/9] border-b border-white/10">
                     <img

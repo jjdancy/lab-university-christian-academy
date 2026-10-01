@@ -78,8 +78,7 @@ export default function AdmissionsPage() {
               <p className="mt-4 max-w-3xl text-sm leading-relaxed text-white/80">
                 LAB University Christian Academy offers K–12 education through the
                 Acellus learning system with in-person teacher support, discussions,
-                and accountability. Optional Division-1 style basketball is available
-                at LABCITY. Enrollment is limited—we keep class sizes focused so
+                and accountability. Optional Division-1 style basketball is also available. Enrollment is limited—we keep class sizes focused so
                 every student is known and supported.
               </p>
               <ul className="mt-6 grid gap-3 sm:grid-cols-2">
@@ -143,7 +142,7 @@ export default function AdmissionsPage() {
               </p>
               <ol className="mt-10 space-y-6 sm:space-y-8">
                 {[
-                  { step: 1, title: "Inquire or schedule a tour", body: "Contact us or book a campus visit to see LAB U and LABCITY in person." },
+                  { step: 1, title: "Inquire or schedule a tour", body: "Contact us or book a campus visit to see LAB U in person." },
                   { step: 2, title: "Submit your application", body: "Complete the application form. We review each application individually." },
                   { step: 3, title: "Interview & decision", body: "Selected families are invited for a conversation. We then communicate our decision and next steps." },
                 ].map(({ step, title, body }) => (
@@ -188,7 +187,7 @@ export default function AdmissionsPage() {
               </h2>
               <p className="mt-4 text-sm leading-relaxed text-white/80">
                 We&apos;re here to help. If you don&apos;t see your question below, reach out
-                at (704) 315-1035 or visit us at 8016 Tower Point Dr, Charlotte, NC 28227.
+                at (704) 315-1035 or visit us at 333 Jeremiah Blvd, Charlotte, NC.
               </p>
               <dl className="mt-10 space-y-6">
                 {[
@@ -198,7 +197,7 @@ export default function AdmissionsPage() {
                   },
                   {
                     q: "Is basketball required?",
-                    a: "No. Basketball is optional. Students can enroll for academics only or add our National, Regional, or Varsity basketball programs at LABCITY.",
+                    a: "No. Basketball is optional. Students can enroll for academics only or add our National, Regional, or Varsity basketball programs.",
                   },
                   {
                     q: "How do I schedule a tour?",

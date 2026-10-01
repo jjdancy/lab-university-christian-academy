@@ -15,7 +15,7 @@ export type HomeFacilitiesPreviewProps = {
 
 export default function HomeFacilitiesPreview({
   eyebrow = "Facilities",
-  headline = "A professional training environment at LABCITY.",
+  headline = "A professional training environment for student-athletes.",
   description =
     "Arena-style court, Dr. Dish shooting lab, performance center, and academic learning spaces—for athletics and classroom learning.",
   ctaLabel = "Explore Our Facilities",
@@ -30,12 +30,12 @@ export default function HomeFacilitiesPreview({
     },
     {
       imageUrl: "/images/area.jpg",
-      imageAlt: "Arena-style court at LABCITY",
+      imageAlt: "Arena-style court at LAB U",
       caption: "Arena-style court",
     },
     {
       imageUrl: "/images/dr%20dish.png",
-      imageAlt: "Dr. Dish shooting lab at LABCITY",
+      imageAlt: "Dr. Dish shooting lab at LAB U",
       caption: "Dr. Dish shooting lab",
     },
   ];

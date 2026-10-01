@@ -7,7 +7,7 @@ import ScheduleTourForm from "@/components/ScheduleTourForm";
 export const metadata: Metadata = {
   title: "Schedule a Tour",
   description:
-    "Schedule a campus tour at LAB University Christian Academy, 8016 Tower Point Dr, Charlotte, NC. See our Christ-centered academics and elite student-athlete development in person.",
+    "Schedule a campus tour at LAB University Christian Academy, 333 Jeremiah Blvd, Charlotte, NC. See our Christ-centered academics and elite student-athlete development in person.",
   alternates: { canonical: "/schedule-tour" },
   openGraph: {
     title: "Schedule a Campus Tour | LAB University Christian Academy",
@@ -42,7 +42,7 @@ export default function ScheduleTourPage() {
                     Campus
                   </p>
                   <p className="mt-2 text-sm text-white/85">
-                    8016 Tower Point Dr, Charlotte, NC 28227
+                    333 Jeremiah Blvd, Charlotte, NC
                   </p>
                   <p className="mt-1 text-sm text-white/85">(704) 315-1035</p>
                 </div>

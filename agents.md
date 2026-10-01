@@ -240,8 +240,8 @@ The homepage should always remain the **highest priority conversion page**.
 Important factual information must remain correct:
 
 Address  
-8016 Tower Point Dr  
-Charlotte, NC 28227
+333 Jeremiah Blvd  
+Charlotte, NC
 
 Phone  
 (704) 315-1035
@@ -262,7 +262,7 @@ This structure supports both academic rigor and athletic training.
 
 # 15. Facilities
 
-Students train at the **LABCITY Sports Training & Event Center**.
+Students train at the **LAB U training facility**.
 
 Key features include:
 

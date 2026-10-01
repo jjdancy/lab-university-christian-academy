@@ -68,7 +68,7 @@ export default function Footer() {
             </span>
           </a>
           <p className="mt-2 text-white/70">
-            8016 Tower Point Dr • Charlotte, NC 28227
+            333 Jeremiah Blvd • Charlotte, NC
           </p>
           <p className="mt-1 text-white/70">(704) 315-1035</p>
           <a
