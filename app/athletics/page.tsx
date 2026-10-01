@@ -410,8 +410,7 @@ export default async function AthleticsPage() {
                 </div>
               </div>
               <p className="mt-8 text-sm font-medium text-white/80">
-                Arena-style court, performance center, and shooting lab at
-                LABCITY.
+                Arena-style court, performance center, and shooting lab.
               </p>
               <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-3">
                 <div className="overflow-hidden rounded-xl bg-black">
@@ -425,7 +424,7 @@ export default async function AthleticsPage() {
                   <HeroBackgroundVideo
                     className="aspect-square w-full object-cover"
                     src="/videos/training3.mp4"
-                    ariaLabel="LAB U training at LABCITY"
+                    ariaLabel="LAB U training"
                   />
                 </div>
                 <div className="hidden overflow-hidden rounded-xl bg-black sm:block">

@@ -7,14 +7,14 @@ import AdmissionsCTASection from "@/components/AdmissionsCTASection";
 export const metadata: Metadata = {
   title: "Facilities",
   description:
-    "Elite facilities built for student-athlete development at LABCITY Sports Training & Event Center—arena-style court, Dr. Dish shooting lab, performance center, and academic spaces.",
+    "Elite facilities built for student-athlete development—arena-style court, Dr. Dish shooting lab, performance center, and academic spaces.",
   alternates: { canonical: "/facilities" },
   openGraph: {
     title: "Facilities | LAB University Christian Academy",
     description:
-      "In partnership with LABCITY Sports Training & Event Center, LAB U provides a professional training environment designed to prepare students for the next level.",
+      "LAB U provides a professional training environment designed to prepare students for the next level.",
     url: "/facilities",
-    images: [{ url: "/images/gym%20facity.png", width: 1200, height: 630, alt: "LAB U training facility at LABCITY" }]
+    images: [{ url: "/images/gym%20facity.png", width: 1200, height: 630, alt: "LAB U training facility" }]
   }
 };
 
@@ -29,7 +29,7 @@ export default function FacilitiesPage() {
             <div className="absolute inset-0">
               <img
                 src="/images/gym%20facity.png"
-                alt="LAB U training facility at LABCITY"
+                alt="LAB U training facility"
                 className="h-full w-full object-cover object-center"
               />
               <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/60 to-black/40" />
@@ -42,8 +42,7 @@ export default function FacilitiesPage() {
                 Elite facilities built for student-athlete development.
               </h1>
               <p className="mt-4 max-w-2xl text-sm leading-relaxed text-white/90 md:text-base">
-                In partnership with LABCITY Sports Training & Event Center, LAB U
-                provides a professional training environment—arena-style court, Dr. Dish
+                LAB U provides a professional training environment—arena-style court, Dr. Dish
                 shooting lab, performance center, and academic spaces—designed to
                 prepare students for the next level.
               </p>
@@ -57,7 +56,7 @@ export default function FacilitiesPage() {
                 <div className="relative aspect-[4/3] overflow-hidden rounded-xl border border-white/10">
                   <img
                     src="/images/area.jpg"
-                    alt="Arena-style basketball court at LABCITY"
+                    alt="Arena-style basketball court at LAB U"
                     className="h-full w-full object-cover object-center"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
@@ -126,7 +125,7 @@ export default function FacilitiesPage() {
                 <div className="relative aspect-[4/3] overflow-hidden rounded-xl border border-yellow-500/20">
                   <img
                     src="/images/dr%20dish.png"
-                    alt="Dr. Dish shooting lab at LABCITY"
+                    alt="Dr. Dish shooting lab at LAB U"
                     className="h-full w-full object-cover object-center"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
@@ -142,7 +141,7 @@ export default function FacilitiesPage() {
                 <div className="relative aspect-[4/3] overflow-hidden rounded-xl border border-white/10">
                   <img
                     src="/images/gym%20facity2.png"
-                    alt="Performance training at LABCITY"
+                    alt="Performance training at LAB U"
                     className="h-full w-full object-cover object-center"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
@@ -249,29 +248,6 @@ export default function FacilitiesPage() {
                 development in academics, athletics, faith, and leadership.
               </p>
               <div className="mt-8 grid gap-5 md:grid-cols-2">
-                <article className="overflow-hidden rounded-2xl border border-white/10 bg-black/55">
-                  <div className="relative aspect-[16/9] border-b border-white/10">
-                    <img
-                      src="/images/labcity%20logo.webp"
-                      alt="LABCITY Sports Training & Event Center"
-                      className="h-full w-full bg-black object-contain object-center p-5"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                  </div>
-                  <div className="p-5 md:p-6">
-                    <h3 className="text-lg font-semibold text-yellow-300">
-                      LABCITY Sports Training & Event Center
-                    </h3>
-                    <p className="mt-3 text-sm leading-relaxed text-white/80">
-                      LAB U operates in partnership with LABCITY to deliver a
-                      professional training environment that mirrors collegiate
-                      expectations. Students develop through arena-level
-                      facilities, structured performance work, and daily
-                      discipline across athletics and academics.
-                    </p>
-                  </div>
-                </article>
-
                 <article className="overflow-hidden rounded-2xl border border-yellow-500/25 bg-black/55">
                   <div className="relative aspect-[16/9] border-b border-white/10">
                     <img

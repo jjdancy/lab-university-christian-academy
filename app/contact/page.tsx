@@ -6,7 +6,7 @@ import MountStaggerReveal from "@/components/MountStaggerReveal";
 export const metadata: Metadata = {
   title: "Contact",
   description:
-    "Contact LAB University Christian Academy at 8016 Tower Point Dr, Charlotte, NC 28227 or (704) 315-1035 for admissions, academics, or athletics questions.",
+    "Contact LAB University Christian Academy at 333 Jeremiah Blvd, Charlotte, NC or (704) 315-1035 for admissions, academics, or athletics questions.",
   alternates: { canonical: "/contact" },
   openGraph: {
     title: "Contact LAB University Christian Academy",
@@ -35,7 +35,7 @@ export default function ContactPage() {
               is here to help.
             </p>
             <div className="mt-6 space-y-2 text-sm text-white/80">
-              <p>8016 Tower Point Dr • Charlotte, NC 28227</p>
+              <p>333 Jeremiah Blvd • Charlotte, NC</p>
               <p>(704) 315-1035</p>
             </div>
           </div>

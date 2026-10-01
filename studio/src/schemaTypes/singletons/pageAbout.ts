@@ -101,7 +101,7 @@ export const pageAbout = defineType({
     }),
     defineField({
       name: "partnership",
-      title: "Partnership with LABCITY",
+      title: "Partnership",
       type: "object",
       fields: [
         defineField({
@@ -113,7 +113,7 @@ export const pageAbout = defineType({
         defineField({
           name: "description",
           title: "Partnership text",
-          description: "Explains the LABCITY partnership in plain language.",
+          description: "Explains the partnership in plain language.",
           type: "text",
           rows: 5,
         }),

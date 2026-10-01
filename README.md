@@ -24,8 +24,8 @@ The site emphasizes **faith, discipline, preparation, and elite development**.
 # Location
 
 LAB University Christian Academy
-8016 Tower Point Dr
-Charlotte, NC 28227
+333 Jeremiah Blvd
+Charlotte, NC
 
 Phone: (704) 315-1035
 
@@ -122,7 +122,7 @@ Athletes train in a structured environment that focuses on:
 
 # Facilities
 
-Students train at the LABCITY Sports Training & Event Center.
+Students train at the LAB U training facility.
 
 Key facilities include:
 

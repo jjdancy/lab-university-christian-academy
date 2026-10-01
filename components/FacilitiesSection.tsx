@@ -22,8 +22,7 @@ export default function FacilitiesSection() {
               .
             </h2>
             <p className="text-sm text-white/70 md:text-base">
-              In partnership with LABCITY Sports Training & Event Center, LAB U
-              provides a professional training environment that mirrors the
+              LAB U provides a professional training environment that mirrors the
               expectations of Division-1 programs—on the court, in the weight
               room, and in academic spaces.
             </p>

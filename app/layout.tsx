@@ -58,10 +58,9 @@ const schoolJsonLd = {
   telephone: "+1-704-315-1035",
   address: {
     "@type": "PostalAddress",
-    streetAddress: "8016 Tower Point Dr",
+    streetAddress: "333 Jeremiah Blvd",
     addressLocality: "Charlotte",
     addressRegion: "NC",
-    postalCode: "28227",
     addressCountry: "US"
   },
   sameAs: []

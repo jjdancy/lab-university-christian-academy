@@ -13,7 +13,7 @@
  Charlotte
 
 **Address:**  
- 8016 Tower Point Dr, Charlotte, NC 28227
+ 333 Jeremiah Blvd, Charlotte, NC
 
 **Phone:**  
  (704) 315-1035
@@ -243,9 +243,7 @@ Content:
  • Christ-centered philosophy  
  • Leadership development
 
-Highlight partnership with:
-
-LABCITY Sports Training & Event Center
+Highlight the LAB U training facility.
 
 ---
 
@@ -540,7 +538,7 @@ Facilities should be presented with **cinematic visuals, large imagery, and stro
 
 # **Facility Overview**
 
-LAB University Christian Academy operates in partnership with the LABCITY Sports Training & Event Center, providing student-athletes access to professional-level training environments.
+LAB University Christian Academy provides student-athletes access to professional-level training environments.
 
 Students train in facilities designed to support:
 
