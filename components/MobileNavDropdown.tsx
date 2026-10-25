@@ -46,7 +46,7 @@ export default function MobileNavDropdown({
   const close = () => setOpen(false);
 
   return (
-    <div className="md:hidden flex items-center justify-end">
+    <div className="xl:hidden flex items-center justify-end">
       <button
         type="button"
         aria-haspopup="dialog"

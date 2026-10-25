@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
+import HomeGamesBanner from "@/components/HomeGamesBanner";
 import HomePromoVideo from "@/components/HomePromoVideo";
 import HomeAcademicsPreview from "@/components/HomeAcademicsPreview";
 import HomeAthleticsPreview from "@/components/HomeAthleticsPreview";
@@ -164,6 +165,8 @@ export default async function Home() {
       <main className="flex flex-col">
         {/* Hero: no scroll reveal so it's visible immediately */}
         <HeroSection {...heroProps} />
+
+        <HomeGamesBanner />
 
         <ScrollReveal delay={0}>
           <HomePromoVideo {...promoVideoProps} />
