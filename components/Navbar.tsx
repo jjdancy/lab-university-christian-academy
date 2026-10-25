@@ -19,10 +19,10 @@ const navLinks = [
     items: [
       { label: "Basketball Program", href: "/athletics" },
       { label: "Teams", href: "/athletics#teams" },
-      { label: "Coaches", href: "/athletics#coaches" },
-      { label: "Home Games & Tickets", href: "/home-games" }
+      { label: "Coaches", href: "/athletics#coaches" }
     ]
   },
+  { label: "Home Games", href: "/home-games" },
   { label: "Facilities", href: "/facilities" },
   { label: "Student-Athlete Support", href: "/student-athlete-support" },
   {
@@ -45,7 +45,7 @@ const navLinks = [
 export default function Navbar() {
   return (
     <header className="sticky top-0 z-30 border-b border-white/10 bg-black/80 backdrop-blur">
-      <div className="mx-auto flex max-w-6xl items-center justify-between gap-6 px-4 py-4 md:px-6 md:gap-8">
+      <div className="mx-auto flex max-w-7xl items-center justify-between gap-6 px-4 py-4 md:px-6 md:gap-6">
         {/* Logo + title — home link */}
         <a
           href="/"
@@ -67,8 +67,8 @@ export default function Navbar() {
         </a>
 
         {/* Nav — centered, even spacing */}
-        <nav className="hidden flex-1 items-center justify-center md:flex">
-          <ul className="flex items-center gap-8 text-xs font-medium uppercase tracking-[0.2em] text-white/70">
+        <nav className="hidden flex-1 items-center justify-center xl:flex">
+          <ul className="flex items-center gap-5 text-xs font-medium uppercase tracking-[0.14em] text-white/70 2xl:gap-7">
             {navLinks.map((link) => {
               if (link.items) {
                 return (
@@ -127,7 +127,7 @@ export default function Navbar() {
         />
 
         {/* CTAs — aligned right */}
-        <div className="hidden shrink-0 items-center gap-3 md:flex">
+        <div className="hidden shrink-0 items-center gap-3 xl:flex">
           <a
             href={SCHEDULE_TOUR_URL}
             className="rounded-full border border-yellow-400/65 bg-yellow-400/5 px-5 py-2.5 text-xs font-semibold uppercase tracking-[0.2em] text-yellow-300 shadow-sm shadow-yellow-500/10 transition-all hover:-translate-y-0.5 hover:border-yellow-400 hover:bg-yellow-400/10 hover:text-yellow-200"

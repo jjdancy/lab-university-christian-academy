@@ -83,11 +83,11 @@ export default function HomeGamesPage() {
           <section className="border-b border-white/10 bg-black py-16 md:py-20">
             <div className="mx-auto max-w-6xl px-4 md:px-6">
               <div className="grid gap-10 md:grid-cols-[1.1fr,1fr] md:items-center md:gap-14">
-                <div className="relative aspect-[4/3] overflow-hidden rounded-xl border border-white/10">
+                <div className="relative mx-auto aspect-[4/5] w-full max-w-md overflow-hidden rounded-xl border border-white/10">
                   <img
                     src="/images/action%20shot.png"
                     alt="LAB U game action"
-                    className="h-full w-full object-cover object-center"
+                    className="h-full w-full object-cover object-top"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
                 </div>
