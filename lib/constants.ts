@@ -11,3 +11,6 @@ export const HIRING_PROMO_DELAY_MS = 3000;
 
 export const HIRING_PROMO_SESSION_KEY = "lab-hiring-promo-dismissed";
 
+
+export const HOME_GAMES_TICKETS_URL =
+  "https://www.zeffy.com/en-US/ticketing/lab-u-home-games";

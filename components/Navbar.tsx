@@ -19,7 +19,8 @@ const navLinks = [
     items: [
       { label: "Basketball Program", href: "/athletics" },
       { label: "Teams", href: "/athletics#teams" },
-      { label: "Coaches", href: "/athletics#coaches" }
+      { label: "Coaches", href: "/athletics#coaches" },
+      { label: "Home Games & Tickets", href: "/home-games" }
     ]
   },
   { label: "Facilities", href: "/facilities" },

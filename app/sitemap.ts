@@ -8,6 +8,7 @@ const routes = [
   { path: "/academics", priority: 0.8, changeFrequency: "monthly" as const },
   { path: "/admissions", priority: 0.9, changeFrequency: "weekly" as const },
   { path: "/athletics", priority: 0.8, changeFrequency: "monthly" as const },
+  { path: "/home-games", priority: 0.8, changeFrequency: "weekly" as const },
   { path: "/facilities", priority: 0.7, changeFrequency: "monthly" as const },
   { path: "/student-athlete-support", priority: 0.7, changeFrequency: "monthly" as const },
   { path: "/schedule-tour", priority: 0.8, changeFrequency: "monthly" as const },
