@@ -27,6 +27,7 @@ const DEFAULT_ATHLETES: AthleteCommitment[] = [
   { name: "Makayla Minshall", image: "/images/makayla%20commit.jpeg", imageAlt: "Makayla Minshall — LAB U commit" },
   { name: "Sophie Sharp", image: "/images/sophie%20commit.jpeg", imageAlt: "Sophie Sharp — LAB U commit" },
   { name: "TJ Campbell", image: "/images/TJ%20commit.jpeg", imageAlt: "TJ Campbell — LAB U commit" },
+  { name: "Mia Minshall", image: "/images/mia%20commit.jpeg", imageAlt: "Mia Minshall — LAB U commit" },
 ];
 
 type AthleteCommitmentsCarouselProps = {
