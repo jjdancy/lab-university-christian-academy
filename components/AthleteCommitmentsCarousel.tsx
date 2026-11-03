@@ -12,6 +12,7 @@ export type AthleteCommitment = {
 };
 
 const DEFAULT_ATHLETES: AthleteCommitment[] = [
+  { name: "Jordan Hunter", image: "/images/jordan%20commit.jpeg", imageAlt: "Jordan Hunter — LAB U commit" },
   { name: "Joel Torres", image: "/images/Joel%20commit.jpeg", imageAlt: "Joel Torres — LAB U commit" },
   { name: "Christian Aukuso", image: "/images/chris%20commit.jpeg", imageAlt: "Christian Aukuso — LAB U commit" },
   { name: "Esmond Thomas", image: "/images/et%20commit.png", imageAlt: "Esmond Thomas — LAB U commit" },
