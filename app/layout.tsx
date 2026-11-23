@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import {Analytics} from "@vercel/analytics/next";
 import "./globals.css";
 import PageAnimation from "@/components/PageAnimation";
-import HiringPromoModal from "@/components/HiringPromoModal";
 import {ScheduleTourModalProvider} from "@/components/ScheduleTourModalProvider";
 
 const SITE_URL = "https://labuniversityprep.com";
@@ -80,7 +79,6 @@ export default function RootLayout({
         />
         <ScheduleTourModalProvider>
           <PageAnimation>{children}</PageAnimation>
-          <HiringPromoModal />
         </ScheduleTourModalProvider>
         <Analytics />
       </body>
